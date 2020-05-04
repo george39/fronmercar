@@ -1,0 +1,36 @@
+<nav id="nav" class="navbar navbar-dark navbar-expand">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="menu-principal">
+            <ul class="navbar-nav">
+
+                <li><a [routerLink]="['/login']" class="nav-link "><i class="fas fa-user fa-lg mr-1"></i>Usuarios</a></li>
+                <li><a routerLink="/perfil" class="nav-link"><i class="fas fa-user fa-lg ml-1"></i>Perfil</a></li>
+                <li><a class="nav-link "><i class="fas fa-user fa-lg mr-1 size:2x"></i>Salir</a></li>
+
+                <li>
+
+                    <div>
+
+                        <!-- <span class="fas fa-search mr-1 fa-lg "></span> -->
+                        <input type="text" class="form-control buscador" placeholder="Buscar">
+                    </div>
+                    <!-- <h4>{{'cualquier' | imagen}}</h4> -->
+
+
+                </li>
+
+
+
+            </ul>
+            <ul class="navbar-nav login navbar-left pl-100">
+
+                <li><a href="#" class="nav-link">Total<i class="fas fa-cart-arrow-down fa-lg ml-1"></i></a></li>
+                <li>
+                    <a class="nav-link" [routerLink]=" [ '/login'] "><i class="fas fa-user fa-lg mr-1 "></i>Login</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</nav>

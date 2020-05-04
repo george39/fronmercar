@@ -1,0 +1,1 @@
+export const GLOBAL = 'http://localhost:3200';

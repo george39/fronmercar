@@ -1,0 +1,29 @@
+<div class="container" id="login">
+    <a type="buttom" [routerLink]="['/']">Ir a la tienda</a>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-12">
+            <form #loginForm="ngForm" class="border rounded p-3 mt-3" (ngSubmit)="onSubmit(loginForm.value)">
+                <h2 class="text-center pb-2">Ingresar</h2>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" id="email" placeholder="Ingrese su email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" id="password" placeholder="ingrese la contraseña" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-login btn-primary btn-block" [disabled]="!loginForm.form.valid">
+                        <i class="fas fa-sign-in-alt mr-2 "></i>
+                        Ingresar</button>
+                </div>
+
+            </form>
+            <span>¿No estas registrado? </span><a [routerLink]="['/registro']">Registrate aqui</a>
+
+        </div>
+    </div>
+</div>

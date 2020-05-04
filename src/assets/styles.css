@@ -1,0 +1,257 @@
+/*
+ESTILOS GENERALES PARA LOS BOTONES
+*/
+.btn {
+  border-radius: 100px !important;
+}
+
+.form-control {
+  border-radius: 100px !important;
+}
+
+/*****************************************************
+ESTILOS COLOR SECUNDARIO
+******************************************************/
+.bg-secundario {
+  background-color: #1E1E1E;
+  width: 20%;
+}
+
+@media (max-width: 785px) {
+  #movil {
+    width: 100%;
+  }
+}
+#header {
+  width: 100%;
+  height: 80px;
+  margin: 0 auto;
+  background-image: url("../assets/img/paven.png");
+}
+
+#header a {
+  text-decoration: none;
+  color: #76e012;
+}
+
+#header h1 {
+  font-family: "nevis";
+  padding-top: 15px;
+  margin-left: 10px;
+  text-shadow: 0px 2px 1px #333;
+}
+
+/*****************************************************
+REDES SOCIALES
+******************************************************/
+#barra-contacto {
+  height: 48px;
+}
+
+.facebook {
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 5px;
+  opacity: 0.7;
+  transition: 0.6s ease;
+}
+
+.youtube {
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 5px;
+  opacity: 0.7;
+  transition: 0.6s ease;
+}
+
+.facebook:hover {
+  opacity: 1;
+  transform: scale(1.4) rotateY(360deg);
+}
+
+.youtube:hover {
+  opacity: 1;
+  transform: scale(1.4) rotate;
+  transform: scale(1.4) rotateY(360deg);
+}
+
+#nav {
+  background-color: #1E1E1E;
+  color: white;
+  width: 100%;
+}
+
+#nav li a {
+  color: #76e012;
+}
+
+#nav li:hover {
+  background: #76e012;
+  border-radius: 50px;
+}
+
+#nav li a:hover {
+  color: #1E1E1E !important;
+}
+
+.login {
+  list-style: none;
+  justify-content: space-between;
+}
+
+#menu-principal {
+  justify-content: space-between;
+}
+
+/*****************************************************
+NAV
+******************************************************/
+#aside {
+  height: 400px;
+  width: 20%;
+  float: left;
+  background-color: #1E1E1E;
+  border: 1px solid #1E1E1E;
+  padding: 0;
+  box-shadow: 2px 0px 2px #76e012;
+  overflow: auto;
+}
+
+.nav-link {
+  color: #76e012 !important;
+}
+
+#aside a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item {
+  border-top: 1px solid #76e012;
+  letter-spacing: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+aside li {
+  position: relative;
+}
+
+aside li ul {
+  position: absolute;
+}
+
+#aside li:hover {
+  background: #585757;
+}
+
+.tienda {
+  text-align: center;
+  color: white;
+}
+
+.esconder > ul > li > ul {
+  display: none;
+  width: 50%;
+  text-align: center;
+  left: 50%;
+  z-index: 1;
+}
+
+.esconder > ul > li:hover > ul {
+  background-color: #383636;
+  color: #1E1E1E;
+  border-bottom: 1px solid #1E1E1E;
+  display: block;
+  padding: 0;
+  font-size: 15px;
+  list-style: none;
+}
+
+.esconder > ul > li > ul:active > {
+  color: #1E1E1E;
+}
+
+.nav-abarrotes {
+  margin: 0px;
+  float: left;
+  width: 80%;
+}
+
+.nav-abarrotes ul li {
+  display: block;
+  float: left;
+  background-color: #413f3f;
+  border-right: 1px solid #76e012;
+  text-decoration: none;
+  list-style: none;
+  font-size: 13px;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.nav-abarrotes ul li a {
+  color: #76e012;
+  padding: 3px;
+  float: left;
+}
+
+.nav-abarrotes ul li:hover {
+  background-color: #76e012;
+}
+
+.nav-abarrotes ul li a:hover {
+  color: #1E1E1E;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .nav-abarrotes {
+    width: 100%;
+  }
+}
+/*****************************************************
+BARRA DE SCROLL
+******************************************************/
+.aside::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aside::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 5px;
+}
+
+#register {
+  width: 500px;
+  background-color: #1E1E1E;
+  color: white;
+  margin-top: 10px;
+}
+
+.btn-register {
+  background-color: #76e012 !important;
+  margin-top: 50px;
+  border: none !important;
+}
+
+/*****************************************************
+FORMULARIO LOGIN 
+******************************************************/
+#login {
+  width: 300px;
+  color: #d8d5d5;
+  margin-top: 50px;
+  padding-bottom: 20px;
+  border-radius: 20px;
+  background-color: #1E1E1E;
+  box-shadow: 3px 3px 3px #1E1E1E;
+}
+
+.btn-login {
+  background-color: #76e012 !important;
+  margin-top: 50px;
+  border: none !important;
+}
+
+/*# sourceMappingURL=styles.css.map */
