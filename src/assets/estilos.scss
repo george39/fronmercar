@@ -29,6 +29,12 @@ ESTILOS GENERALES PARA LOS BOTONES
     // border: none !important;
 }
 
+.navbar-nav .active {
+    background-color: $principal;
+    color: $secundario !important;
+    border-radius: 50px;
+}
+
 
 /*****************************************************
 ESTILOS COLOR SECUNDARIO
@@ -306,4 +312,10 @@ FORMULARIO LOGIN
     background-color: $principal !important;
     margin-top: 50px;
     border: none !important;
+}
+
+@media (max-width: 768px) {
+    .iconos-movil {
+        font-size: 13px !important;
+    }
 }

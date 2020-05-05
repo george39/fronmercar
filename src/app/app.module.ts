@@ -16,6 +16,8 @@ import { SectionComponent } from './components/shared/section/section.component'
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes/nav-abarrotes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     NavbarComponent,
     SectionComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent,
+    NavAbarrotesComponent
   ],
   imports: [
     BrowserModule,

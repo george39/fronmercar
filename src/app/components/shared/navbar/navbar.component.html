@@ -3,9 +3,9 @@
         <div class="collapse navbar-collapse" id="menu-principal">
             <ul class="navbar-nav">
 
-                <li><a [routerLink]="['/login']" class="nav-link "><i class="fas fa-user fa-lg mr-1"></i>Usuarios</a></li>
-                <li><a routerLink="/perfil" class="nav-link"><i class="fas fa-user fa-lg ml-1"></i>Perfil</a></li>
-                <li><a class="nav-link "><i class="fas fa-user fa-lg mr-1 size:2x"></i>Salir</a></li>
+                <li class="iconos-movil"><a [routerLink]="['/login']" class="nav-link "><i class="fas fa-user fa-lg mr-1"></i>Usuarios</a></li>
+                <li class="iconos-movil"><a routerLink="/perfil" class="nav-link"><i class="fas fa-user fa-lg ml-1"></i>Perfil</a></li>
+                <li class="iconos-movil"><a class="nav-link "><i class="fas fa-user fa-lg mr-1 "></i>Salir</a></li>
 
                 <li>
 
@@ -24,9 +24,9 @@
             </ul>
             <ul class="navbar-nav login navbar-left pl-100">
 
-                <li><a href="#" class="nav-link">Total<i class="fas fa-cart-arrow-down fa-lg ml-1"></i></a></li>
-                <li>
-                    <a class="nav-link" [routerLink]=" [ '/login'] "><i class="fas fa-user fa-lg mr-1 "></i>Login</a>
+                <li class="iconos-movil"><a href="#" class="nav-link"><i class="fas fa-cart-arrow-down fa-lg ml-1"></i>Total</a></li>
+                <li class="iconos-movil">
+                    <a class="nav-link" [routerLink]=" [ '/login'] " [routerLinkActive]="['active']"><i class="fas fa-user fa-lg mr-1 "></i>Login</a>
                 </li>
             </ul>
 

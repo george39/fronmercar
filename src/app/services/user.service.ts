@@ -22,7 +22,7 @@ export class UserService {
   // CREAR UN USUARIO 
   // ================================================
   saveUser( user: User) {
-    let url = GLOBAL + '/usuario';
+    let url = GLOBAL + '/save-user';
     
     return this.http.post(url, user);
   }
