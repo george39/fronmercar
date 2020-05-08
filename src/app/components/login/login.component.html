@@ -2,17 +2,23 @@
     <a type="buttom" [routerLink]="['/']">Ir a la tienda</a>
     <div class="row justify-content-center">
         <div class="col-12 col-lg-12">
-            <form #loginForm="ngForm" class="border rounded p-3 mt-3" (ngSubmit)="onSubmit(loginForm.value)">
+            <form #loginForm="ngForm" class="border rounded p-3 mt-3" (ngSubmit)="onSubmit()">
                 <h2 class="text-center pb-2">Ingresar</h2>
 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" id="email" placeholder="Ingrese su email" required>
+                    <span *ngIf="!email.valid && email.touched">
+                        El email es obligatorio
+                    </span>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" id="password" placeholder="ingrese la contraseña" required>
+                    <span *ngIf="!password.valid && password.touched">
+                        La contraseña es obligatoria
+                    </span>
                 </div>
 
                 <div class="form-group">

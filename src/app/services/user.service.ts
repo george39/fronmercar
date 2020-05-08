@@ -31,13 +31,15 @@ export class UserService {
   /****************************************************************
   LOGIN DE USUARIO
   **************************************************************** */
- signup(user): Observable<any>{
-   let json = JSON.stringify(user);
-   let params = 'json'+json;
+ signup(userLogin, gettoken = null): Observable<any>{
 
-   let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+  if (gettoken !=null) {
+    userLogin.gettoken = gettoken;
+  }
+  let params = JSON.stringify(userLogin);
+  let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-   return this.http.post(this.url + '/login', params, {headers});
+  return this.http.post(this.url + '/login', params, {headers});
  }
 
 
