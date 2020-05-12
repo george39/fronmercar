@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { observable, Observable } from 'rxjs';
 import { User } from '../models/user';
 import { GLOBAL } from './global';
+import 'rxjs/add/operator/map';
 
 
 @Injectable({
@@ -11,6 +12,8 @@ import { GLOBAL } from './global';
 export class UserService {
 
   public url: string;
+  public identity;
+  public token;
 
   constructor(
     public http: HttpClient
@@ -31,7 +34,7 @@ export class UserService {
   /****************************************************************
   LOGIN DE USUARIO
   **************************************************************** */
- signup(userLogin, gettoken = null): Observable<any>{
+  signup(userLogin, gettoken = null): Observable<any>{
 
   if (gettoken !=null) {
     userLogin.gettoken = gettoken;
@@ -40,7 +43,43 @@ export class UserService {
   let headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   return this.http.post(this.url + '/login', params, {headers});
- }
+  }
+
+
+  getIdentity() {
+    let identity = JSON.parse(localStorage.getItem('identity'));
+
+    if (identity !== undefined) {
+      this.identity = identity;
+    } else {
+      this.identity = null;
+    }
+
+    return this.identity;
+  }
+
+
+  getToken() {
+    let token = localStorage.getItem('token');
+
+    if (token !== undefined) {
+      this.token = token;
+    } else {
+      this.token = null;
+    }
+
+    return this.token;
+  }
+
+  updateUser(userUpdate): Observable<any> {
+    let params = JSON.stringify(userUpdate);
+    let headers = new HttpHeaders({'Content-Type': 'application/json', Authorization: this.getToken()
+    });
+
+    return this.http.put(this.url + '/update-user/' + userUpdate._id, params, {headers})
+                        .map(res => res);
+  }
+
 
 
 

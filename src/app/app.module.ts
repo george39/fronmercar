@@ -18,6 +18,12 @@ import { routing, appRoutingProviders } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes/nav-abarrotes.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
+
+import { AddComponent } from './admin/components/add/add.component';
+import { AdminModule } from './admin/admin.module';
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +36,11 @@ import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes
     SectionComponent,
     SidebarComponent,
     HomeComponent,
-    NavAbarrotesComponent
+    NavAbarrotesComponent,
+    UserEditComponent,
+    
+    AddComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +48,8 @@ import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes
     routing,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

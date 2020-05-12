@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, DoCheck {
 
-  constructor() { }
+  public identity;
 
-  ngOnInit(): void {
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.identity = this.userService.getIdentity();
+  }
+
+  ngDoCheck() {
+    this.identity = this.userService.getIdentity();
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 }

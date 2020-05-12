@@ -6,6 +6,7 @@ import { SectionComponent } from './components/shared/section/section.component'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes/nav-abarrotes.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 
 
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     {path: 'registro', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'abarrotes', component: NavAbarrotesComponent},
+    {path: 'actualizar-datos', component: UserEditComponent},
     {path: 'login', redirectTo: '/', pathMatch: 'full'},
     {path: '**', component: HomeComponent}
 ];

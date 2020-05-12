@@ -1,6 +1,10 @@
 /*
 ESTILOS GENERALES PARA LOS BOTONES
 */
+.pointer {
+  cursor: pointer;
+}
+
 .btn {
   border-radius: 100px !important;
 }
@@ -82,16 +86,17 @@ REDES SOCIALES
 }
 
 #nav {
-  background-color: #1E1E1E;
+  background-color: #1E1E1E !important;
   color: white;
   width: 100%;
+  padding-left: 0px !important;
 }
 
 #nav li a {
   color: #76e012;
 }
 
-#nav li:hover {
+#nav .iconos-nav:hover {
   background: #76e012;
   border-radius: 50px;
 }
@@ -109,8 +114,51 @@ REDES SOCIALES
   justify-content: space-between;
 }
 
+.dropdown button {
+  background-color: #1E1E1E !important;
+  border-radius: 50px;
+  color: #76e012 !important;
+  margin-left: 8px;
+}
+
+.dropdown button:hover {
+  background-color: #76e012 !important;
+  border-radius: 50px;
+  color: #1E1E1E !important;
+  margin-left: 8px;
+}
+
+.usuario {
+  list-style: none;
+}
+
+#nav > div > ul > li > ul {
+  display: none;
+  position: absolute;
+  background-color: #1E1E1E !important;
+  text-align: center;
+  width: 160px;
+  padding: 0;
+  box-shadow: 0px 2px 2px #1E1E1E;
+  list-style: none;
+  z-index: 1;
+}
+
+#nav > div > ul > li:hover > ul {
+  display: block;
+}
+
+#nav > div > ul > li:hover > ul li a {
+  color: #76e012 !important;
+}
+
+#nav > div > ul > li > ul > li:hover {
+  color: #76e012 !important;
+  background-color: #464646 !important;
+}
+
 /*****************************************************
-NAV
+ASIDE
 ******************************************************/
 #aside {
   height: 400px;
@@ -125,11 +173,6 @@ NAV
 
 .nav-link {
   color: #76e012 !important;
-}
-
-#aside a {
-  color: white;
-  text-decoration: none;
 }
 
 .nav-item {
@@ -263,6 +306,22 @@ FORMULARIO LOGIN
 @media (max-width: 768px) {
   .iconos-movil {
     font-size: 13px !important;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 10px;
+  }
+
+  .nav-expandida {
+    display: none !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: green;
+    border-radius: 5px;
   }
 }
 

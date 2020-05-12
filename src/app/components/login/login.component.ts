@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.userService.getIdentity());
+    console.log(this.userService.getToken());
+    
   }
   
   onSubmit() {
@@ -45,6 +48,7 @@ export class LoginComponent implements OnInit {
           this.identity.password = ':)';
           // Mostrar identity
           console.log(this.identity);
+          localStorage.setItem('identity', JSON.stringify(this.identity));
 
 
           // Conseguir el token
@@ -56,7 +60,8 @@ export class LoginComponent implements OnInit {
                 Swal.fire('importante', 'El  token no se ha generado', 'warning');
               } else {
                 // Mostrar token
-                console.log(this.token);
+                localStorage.setItem('token', this.token);
+                this.router.navigate(['/']);
               }
             },
             error => {

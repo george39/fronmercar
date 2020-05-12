@@ -20,6 +20,10 @@ $textobotones: white;
 ESTILOS GENERALES PARA LOS BOTONES
 */
 
+.pointer {
+    cursor: pointer;
+}
+
 .btn {
     border-radius: 100px !important;
 }
@@ -113,9 +117,10 @@ REDES SOCIALES
 // NAVBAR
 //**************************************************************************
 #nav {
-    background-color: $secundario;
+    background-color: $secundario !important;
     color: $textobotones;
     width: 100%;
+    padding-left: 0px !important;
     // padding-top: 3px;
 }
 
@@ -123,7 +128,7 @@ REDES SOCIALES
     color: $principal;
 }
 
-#nav li:hover {
+#nav .iconos-nav:hover {
     background: $principal;
     border-radius: 50px;
 }
@@ -144,9 +149,63 @@ REDES SOCIALES
     justify-content: space-between;
 }
 
+.dropdown button {
+    background-color: $secundario!important;
+    border-radius: 50px;
+    color: $principal !important;
+    margin-left: 8px;
+}
+
+.dropdown button:hover {
+    background-color: $principal !important;
+    border-radius: 50px;
+    color: $secundario !important;
+    margin-left: 8px;
+}
+
+// .segundos:hover {
+//     background-color: $principal;
+//     border-radius: 50px;
+// }
+.usuario {
+    list-style: none;
+}
+
+// menu desplegable
+// #abarrotes {
+//     // display: none;
+//     position: absolute;
+//     color: red;
+//     list-style: none;
+// }
+#nav>div>ul>li>ul {
+    display: none;
+    position: absolute;
+    background-color: $secundario !important;
+    text-align: center;
+    width: 160px;
+    padding: 0;
+    box-shadow: 0px 2px 2px $secundario;
+    list-style: none;
+    z-index: 1;
+}
+
+#nav>div>ul>li:hover>ul {
+    display: block;
+}
+
+#nav>div>ul>li:hover>ul li a {
+    color: $principal !important;
+}
+
+#nav>div>ul>li>ul>li:hover {
+    color: $principal !important;
+    background-color: rgb(70, 70, 70) !important;
+}
+
 
 /*****************************************************
-NAV
+ASIDE
 ******************************************************/
 
 #aside {
@@ -162,11 +221,6 @@ NAV
 
 .nav-link {
     color: $principal !important;
-}
-
-#aside a {
-    color: white;
-    text-decoration: none;
 }
 
 //**************************************************************************
@@ -317,5 +371,18 @@ FORMULARIO LOGIN
 @media (max-width: 768px) {
     .iconos-movil {
         font-size: 13px !important;
+        margin-left: 30px;
+        margin-right: 30px;
+        padding-left: 10px;
+    }
+    .nav-expandida {
+        display: none !important;
+    }
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+     ::-webkit-scrollbar-thumb {
+        background-color: green;
+        border-radius: 5px;
     }
 }

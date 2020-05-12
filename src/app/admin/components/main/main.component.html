@@ -1,6 +1,6 @@
 <!-- BARRA LATERAL -->
-<!-- <nav id="movil" class="navbar navbar-expand-lg navbar-dark bg-secundario d-block d-md-none p-0">
-    <a class="navbar-brand text-center" href="#">Entrar a la tienda</a>
+<nav id="movil" class="navbar navbar-expand-lg navbar-dark bg-secundario d-block d-md-none p-0">
+    <a class="navbar-brand text-center" href="#">Administrar la tienda</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-chevron-down "></i> 
     </button>
@@ -36,16 +36,17 @@
         </ul>
 
     </div>
-</nav> -->
+</nav>
 
 <!-- BARRA LATERAL -->
-<!-- <div id="aside" class="col-12 d-none d-md-block aside">
+<div id="aside" class="col-12 d-none d-md-block aside">
     <aside class="esconder ">
-        <h6 href="#" class="tienda">Entrar a la tienda</h6>
+        <h6 href="#" class="tienda">Administrar la tienda</h6>
+
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" routerLinkActive="active" [routerLink]="['/abarrotes']">Abarrotes</a>
-                <ul >
+                <ul>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="active" routerLink="/arroz">Arroz</a>
                     </li>
@@ -130,4 +131,6 @@
 
 
     </aside>
-</div> -->
+</div>
+
+<router-outlet></router-outlet>

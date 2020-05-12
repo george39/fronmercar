@@ -1,20 +1,90 @@
-<nav id="nav" class="navbar navbar-dark navbar-expand">
+<!-- <nav id="nav" class="navbar navbar-dark navbar-expand-md">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-chevron-down "></i> 
+    </button>
     <div class="container">
         <div class="collapse navbar-collapse" id="menu-principal">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav primeros">
 
-                <li class="iconos-movil"><a [routerLink]="['/login']" class="nav-link "><i class="fas fa-user fa-lg mr-1"></i>Usuarios</a></li>
-                <li class="iconos-movil"><a routerLink="/perfil" class="nav-link"><i class="fas fa-user fa-lg ml-1"></i>Perfil</a></li>
-                <li class="iconos-movil"><a class="nav-link "><i class="fas fa-user fa-lg mr-1 "></i>Salir</a></li>
+                <li class="iconos-movil">
+                    <a [routerLink]="['/login']" class="nav-link ">Abarrotes</a>
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link " routerLink="active" routerLink="/arroz">Arroz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Aceite</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Azucar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Gronos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Pastas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Arinas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Sal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Huevos</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="iconos-movil">
+                    <a routerLink="/perfil" class="nav-link">Despensa</a>
+
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Enlatados y conservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Cereales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Avenas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Salsas y vinagre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Condimentos y adobos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Caldos, sopas y cremas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="iconos-movil">
+                    <a class="nav-link ">Nevera</a>
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Gaseosas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Lacteos</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="iconos-movil">
+                    <a [routerLink]="['/login']" class="nav-link ">
+                        Aseo</a>
+                </li>
+                <li class="iconos-movil"><a routerLink="/perfil" class="nav-link">Galletas</a></li>
+                <li class="iconos-movil"><a class="nav-link ">Carnes</a></li>
+                <li class="iconos-movil"><a [routerLink]="['/login']" class="nav-link ">Licores</a></li>
+                <li class="iconos-movil"><a routerLink="/perfil" class="nav-link">Elados</a></li>
+                <li class="iconos-movil"><a class="nav-link aba">Golosinas</a></li>
 
                 <li>
 
-                    <div>
 
-                        <!-- <span class="fas fa-search mr-1 fa-lg "></span> -->
-                        <input type="text" class="form-control buscador" placeholder="Buscar">
-                    </div>
-                    <!-- <h4>{{'cualquier' | imagen}}</h4> -->
 
 
                 </li>
@@ -22,15 +92,154 @@
 
 
             </ul>
-            <ul class="navbar-nav login navbar-left pl-100">
+            <ul class="navbar-nav  navbar-left pl-100 ">
+                <div>
 
-                <li class="iconos-movil"><a href="#" class="nav-link"><i class="fas fa-cart-arrow-down fa-lg ml-1"></i>Total</a></li>
-                <li class="iconos-movil">
+                    <input type="text" class="form-control buscador" placeholder="Buscar">
+                </div>
+
+                <li class="iconos-movil segundos"><a href="#" class="nav-link"><i class="fas fa-cart-arrow-down fa-lg ml-1"></i>Total</a></li>
+                <li *ngIf="identity">
+                    <div class="dropdown ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user fa-lg mr-1 "></i>{{identity.name}}
+                    </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" [routerLink]="['/administracion']">Administración</a>
+                            <a class="dropdown-item" [routerLink]="['/actualizar-datos']">Actualizar datos</a>
+
+                            <a class="dropdown-item pointer" (click)="logout()">Salir</a>
+                        </div>
+                    </div>
+                </li>
+
+
+
+                <li class="iconos-movil segundos" *ngIf="!identity">
                     <a class="nav-link" [routerLink]=" [ '/login'] " [routerLinkActive]="['active']"><i class="fas fa-user fa-lg mr-1 "></i>Login</a>
                 </li>
+
+
             </ul>
 
         </div>
     </div>
 
+</nav> -->
+
+
+
+<nav id="nav" class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="iconos-movil iconos-nav">
+                <a [routerLink]="['/login']" class="nav-link ">Abarrotes</a>
+
+                <ul class="nav-expandida">
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="active">Arroz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Aceite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Azucar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Gronos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Pastas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Arinas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Sal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="active" routerLink="/arroz">Huevos</a>
+                    </li>
+
+
+                </ul>
+
+
+                <li class="iconos-movil iconos-nav">
+                    <a routerLink="/perfil" class="nav-link">Despensa</a>
+
+                    <ul class="nav-expandida">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Enlatados y conservas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Cereales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Avenas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Salsas y vinagre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Condimentos y adobos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Caldos, sopas y cremas</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="iconos-movil iconos-nav">
+                    <a class="nav-link ">Nevera</a>
+                    <ul class="nav-expandida">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Gaseosas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="active" routerLink="/arroz">Lacteos</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="iconos-movil iconos-nav">
+                    <a [routerLink]="['/login']" class="nav-link ">
+                        Aseo</a>
+                </li>
+                <li class="iconos-movil iconos-nav"><a routerLink="/perfil" class="nav-link">Galletas</a></li>
+                <li class="iconos-movil iconos-nav"><a class="nav-link ">Carnes</a></li>
+                <li class="iconos-movil iconos-nav"><a [routerLink]="['/login']" class="nav-link ">Licores</a></li>
+                <li class="iconos-movil iconos-nav"><a routerLink="/perfil" class="nav-link">Elados</a></li>
+                <li class="iconos-movil iconos-nav"><a class="nav-link aba">Golosinas</a></li>
+
+
+                <li class="iconos-movil iconos-nav segundos" *ngIf="!identity">
+                    <a class="nav-link" [routerLink]=" [ '/login'] " [routerLinkActive]="['active']"><i class="fas fa-user fa-lg mr-1 "></i>Login</a>
+                </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 usuario">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            <li class="iconos-movil iconos-nav"><a href="#" class="nav-link"><i class="fas fa-cart-arrow-down fa-lg ml-1"></i>Total</a></li>
+            <div *ngIf="identity">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user fa-lg mr-1 "></i>{{identity.name}}
+                </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" [routerLink]="['/administracion/panel']">Administración</a>
+                        <a class="dropdown-item" [routerLink]="['/actualizar-datos']">Actualizar datos</a>
+
+                        <a class="dropdown-item pointer" (click)="logout()">Salir</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </nav>
