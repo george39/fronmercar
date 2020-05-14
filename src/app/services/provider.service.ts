@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Provider } from '../models/Provider';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GLOBAL } from './global';
 
 @Injectable({
@@ -19,9 +19,13 @@ export class ProviderService {
   /***********************************************
    CREAR UN PROVEEDOR
   /***********************************************/
-  saveProvider(provider: Provider) {
-    let url = GLOBAL + '/save-provider';
+  saveProvider(token, provider) {
+    let params = JSON.stringify(provider);
+    let headers = new HttpHeaders(({
+      'Content-Type': 'application/json',
+      Authorization: token
+    }));
 
-    return this.http.post(url, provider);
+    return this.http.post(this.url + '/save-provider', params, {headers});
   }
 }
