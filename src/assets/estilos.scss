@@ -12,7 +12,8 @@
 // PATRONES DE COLORES
 //*********************************************
 $principal: #76e012;
-$secundario: #1E1E1E;
+$secundario: rgb(37, 37, 37);
+$activo: rgb(81, 97, 86);
 $textonavbar: red;
 $textobotones: white;
 
@@ -33,9 +34,9 @@ ESTILOS GENERALES PARA LOS BOTONES
     // border: none !important;
 }
 
-.navbar-nav .active {
-    background-color: $principal;
-    color: $secundario !important;
+.active {
+    background-color: $activo;
+    //color: $textobotones !important;
     border-radius: 50px;
 }
 
@@ -120,21 +121,23 @@ REDES SOCIALES
     background-color: $secundario !important;
     color: $textobotones;
     width: 100%;
-    padding-left: 0px !important;
+    padding: 0px !important;
     // padding-top: 3px;
 }
 
 #nav li a {
-    color: $principal;
+    color: $textobotones;
+    transition: all 300ms;
 }
 
 #nav .iconos-nav:hover {
-    background: $principal;
+    background: rgb(81, 97, 86); //$principal;
     border-radius: 50px;
+    //color: $secundario !important;
 }
 
 #nav li a:hover {
-    color: $secundario !important;
+    //color: $secundario !important;
 }
 
 // login y registro
@@ -157,9 +160,9 @@ REDES SOCIALES
 }
 
 .dropdown button:hover {
-    background-color: $principal !important;
+    background-color: rgb(81, 97, 86) !important;
     border-radius: 50px;
-    color: $secundario !important;
+    //color: $secundario !important;
     margin-left: 8px;
 }
 
@@ -181,6 +184,7 @@ REDES SOCIALES
 #nav>div>ul>li>ul {
     display: none;
     position: absolute;
+    color: $secundario;
     background-color: $secundario !important;
     text-align: center;
     width: 160px;
@@ -188,6 +192,26 @@ REDES SOCIALES
     box-shadow: 0px 2px 2px $secundario;
     list-style: none;
     z-index: 1;
+    transition: all 300ms;
+}
+
+// Usuario logueado
+.usuario {
+    padding-right: 20px;
+}
+
+.dropdown-menu {
+    background-color: $secundario !important;
+    color: $principal !important;
+}
+
+.dropdown-menu a {
+    color: $principal !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: $activo !important;
+    color: $principal !important;
 }
 
 #nav>div>ul>li:hover>ul {
@@ -209,9 +233,10 @@ ASIDE
 ******************************************************/
 
 #aside {
-    height: 400px;
+    //
+    height: 150px;
     width: 20%;
-    float: left;
+    float: right;
     background-color: $secundario;
     border: 1px solid #1E1E1E;
     padding: 0;
@@ -280,7 +305,7 @@ aside li ul {
 .nav-abarrotes {
     margin: 0px;
     float: left;
-    width: 80%;
+    width: 100%;
 }
 
 .nav-abarrotes ul li {

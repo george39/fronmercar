@@ -13,9 +13,8 @@ ESTILOS GENERALES PARA LOS BOTONES
   border-radius: 100px !important;
 }
 
-.navbar-nav .active {
-  background-color: #76e012;
-  color: #1E1E1E !important;
+.active {
+  background-color: #516156;
   border-radius: 50px;
 }
 
@@ -23,7 +22,7 @@ ESTILOS GENERALES PARA LOS BOTONES
 ESTILOS COLOR SECUNDARIO
 ******************************************************/
 .bg-secundario {
-  background-color: #1E1E1E;
+  background-color: #252525;
   width: 20%;
 }
 
@@ -86,23 +85,20 @@ REDES SOCIALES
 }
 
 #nav {
-  background-color: #1E1E1E !important;
+  background-color: #252525 !important;
   color: white;
   width: 100%;
-  padding-left: 0px !important;
+  padding: 0px !important;
 }
 
 #nav li a {
-  color: #76e012;
+  color: white;
+  transition: all 300ms;
 }
 
 #nav .iconos-nav:hover {
-  background: #76e012;
+  background: #516156;
   border-radius: 50px;
-}
-
-#nav li a:hover {
-  color: #1E1E1E !important;
 }
 
 .login {
@@ -115,16 +111,15 @@ REDES SOCIALES
 }
 
 .dropdown button {
-  background-color: #1E1E1E !important;
+  background-color: #252525 !important;
   border-radius: 50px;
   color: #76e012 !important;
   margin-left: 8px;
 }
 
 .dropdown button:hover {
-  background-color: #76e012 !important;
+  background-color: #516156 !important;
   border-radius: 50px;
-  color: #1E1E1E !important;
   margin-left: 8px;
 }
 
@@ -135,13 +130,33 @@ REDES SOCIALES
 #nav > div > ul > li > ul {
   display: none;
   position: absolute;
-  background-color: #1E1E1E !important;
+  color: #252525;
+  background-color: #252525 !important;
   text-align: center;
   width: 160px;
   padding: 0;
-  box-shadow: 0px 2px 2px #1E1E1E;
+  box-shadow: 0px 2px 2px #252525;
   list-style: none;
   z-index: 1;
+  transition: all 300ms;
+}
+
+.usuario {
+  padding-right: 20px;
+}
+
+.dropdown-menu {
+  background-color: #252525 !important;
+  color: #76e012 !important;
+}
+
+.dropdown-menu a {
+  color: #76e012 !important;
+}
+
+.dropdown-menu a:hover {
+  background-color: #516156 !important;
+  color: #76e012 !important;
 }
 
 #nav > div > ul > li:hover > ul {
@@ -161,10 +176,10 @@ REDES SOCIALES
 ASIDE
 ******************************************************/
 #aside {
-  height: 400px;
+  height: 150px;
   width: 20%;
-  float: left;
-  background-color: #1E1E1E;
+  float: right;
+  background-color: #252525;
   border: 1px solid #1E1E1E;
   padding: 0;
   box-shadow: 2px 0px 2px #76e012;
@@ -209,8 +224,8 @@ aside li ul {
 
 .esconder > ul > li:hover > ul {
   background-color: #383636;
-  color: #1E1E1E;
-  border-bottom: 1px solid #1E1E1E;
+  color: #252525;
+  border-bottom: 1px solid #252525;
   display: block;
   padding: 0;
   font-size: 15px;
@@ -218,13 +233,13 @@ aside li ul {
 }
 
 .esconder > ul > li > ul:active > {
-  color: #1E1E1E;
+  color: #252525;
 }
 
 .nav-abarrotes {
   margin: 0px;
   float: left;
-  width: 80%;
+  width: 100%;
 }
 
 .nav-abarrotes ul li {
@@ -250,7 +265,7 @@ aside li ul {
 }
 
 .nav-abarrotes ul li a:hover {
-  color: #1E1E1E;
+  color: #252525;
   text-decoration: none;
 }
 
@@ -273,7 +288,7 @@ BARRA DE SCROLL
 
 #register {
   width: 500px;
-  background-color: #1E1E1E;
+  background-color: #252525;
   color: white;
   margin-top: 10px;
 }
@@ -293,8 +308,8 @@ FORMULARIO LOGIN
   margin-top: 50px;
   padding-bottom: 20px;
   border-radius: 20px;
-  background-color: #1E1E1E;
-  box-shadow: 3px 3px 3px #1E1E1E;
+  background-color: #252525;
+  box-shadow: 3px 3px 3px #252525;
 }
 
 .btn-login {
