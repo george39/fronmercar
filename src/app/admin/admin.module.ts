@@ -9,6 +9,7 @@ import { ProviderComponent } from './components/provider/provider.component';
 import { PanelAdmonComponent } from './components/panel-admon/panel-admon.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminGuard } from '../services/admin.guard';
+import { ListProviderComponent } from './components/provider/list-provider.component';
 
 
 
@@ -20,7 +21,8 @@ import { AdminGuard } from '../services/admin.guard';
     ArrozComponent,
     ProviderComponent,
     PanelAdmonComponent,
-    ProductComponent
+    ProductComponent,
+    ListProviderComponent
   ],
   imports: [
     CommonModule,

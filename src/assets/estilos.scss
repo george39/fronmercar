@@ -242,6 +242,7 @@ ASIDE
     padding: 0;
     box-shadow: 2px 0px 2px $principal;
     overflow: auto;
+    border-radius: 5px;
 }
 
 .nav-link {
@@ -364,6 +365,7 @@ BARRA DE SCROLL
     background-color: $secundario;
     color: white;
     margin-top: 10px;
+    border-radius: 5px;
 }
 
 .btn-register {
@@ -409,5 +411,31 @@ FORMULARIO LOGIN
      ::-webkit-scrollbar-thumb {
         background-color: green;
         border-radius: 5px;
+    }
+}
+
+
+/***********************************************************
+ FORMULARIO PROVEEDOR
+************************************************************/
+
+#provider {
+    background-color: $secundario;
+    color: $principal;
+    border-color: $principal;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#lista-proveedores {
+    width: 50%;
+    margin-left: 200px;
+}
+
+@media (max-width: 768px) {
+    #lista-proveedores {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
     }
 }

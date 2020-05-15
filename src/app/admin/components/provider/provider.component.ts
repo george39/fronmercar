@@ -36,11 +36,13 @@ export class ProviderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(form) {
     
     this.providerService.saveProvider(this.token, this.provider).subscribe(
       response => {
         Swal.fire('BUEN TRABAJO', 'El usuario ha sido creado', 'success');
+        this.router.navigate(['/admon/listar-proveedores']);
+        form.reset();
       },
       error => {
 

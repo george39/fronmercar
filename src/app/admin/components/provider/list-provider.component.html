@@ -1,0 +1,26 @@
+<div id="lista-proveedores" class="row pl-5">
+    <div class="container">
+        <div class="col-12">
+
+            <h2 class="text-center mt-3 mb-5">{{title}}</h2>
+
+            <a class="btn btn-success" [routerLink]="['/admon/crear-proveedor']">Crear un proveedor</a>
+
+            <table class="table table-hover ">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let proveedor of provider">
+                    <tr>
+                        <td>{{proveedor.nameProvider}}</td>
+                        <td>{{proveedor.nameCompany}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

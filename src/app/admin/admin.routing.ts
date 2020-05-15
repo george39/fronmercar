@@ -7,6 +7,7 @@ import { ProviderComponent } from './components/provider/provider.component';
 import { PanelAdmonComponent } from './components/panel-admon/panel-admon.component';
 import { ProductComponent } from './components/product/product.component';
 import { AdminGuard } from '../services/admin.guard';
+import { ListProviderComponent } from './components/provider/list-provider.component';
 
 
 
@@ -16,10 +17,11 @@ const adminRoutes: Routes = [
         component: MainComponent,
         canActivate: [AdminGuard],
         children: [
-            {path: '', redirectTo: 'crear-proveedor', pathMatch: 'full'},
-           //{path: 'panel', component: PanelAdmonComponent},
+            {path: '', redirectTo: 'listar-proveedores', pathMatch: 'full'},
+           // {path: 'panel', component: PanelAdmonComponent},
            {path: 'crear-proveedor', component: ProviderComponent},
-           {path: 'crear-producto', component: ProductComponent}
+           {path: 'crear-producto', component: ProductComponent},
+           {path: 'listar-proveedores', component: ListProviderComponent}
 
            // { path: 'abarrotes', component: MainComponent }
         ]
