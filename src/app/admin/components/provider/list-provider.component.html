@@ -1,16 +1,19 @@
-<div id="lista-proveedores" class="row pl-5">
+<a class="btn btn-success mt-5 offset-md-8" [routerLink]="['/admon/crear-proveedor']">Crear un proveedor</a>
+<div id="lista-proveedores" class="row pl-5" *ngIf="provider">
     <div class="container">
         <div class="col-12">
 
-            <h2 class="text-center mt-3 mb-5">{{title}}</h2>
+            <h2 class="text-center mb-5">{{title}}</h2>
 
-            <a class="btn btn-success" [routerLink]="['/admon/crear-proveedor']">Crear un proveedor</a>
 
-            <table class="table table-hover ">
+            <table class="table table-hover table-dark table-responsive">
                 <thead class="thead-default">
                     <tr>
                         <th>Nombre</th>
                         <th>Empresa</th>
+                        <th>Telefono</th>
+                        <th>Eitar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
 
@@ -18,6 +21,17 @@
                     <tr>
                         <td>{{proveedor.nameProvider}}</td>
                         <td>{{proveedor.nameCompany}}</td>
+                        <td>{{proveedor.phone}}</td>
+                        <td>
+                            <a [routerLink]="['/admon/editar-proveedor', proveedor._id]" class="btn btn-primary mt-1"><i class="fas fa-user-edit mr-2"></i>Editar</a>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary" (click)="alerta(proveedor.nameProvider, proveedor._id)" class="btn btn-danger mt-1"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
+
+
+
+
+                        </td>
                     </tr>
                 </tbody>
             </table>

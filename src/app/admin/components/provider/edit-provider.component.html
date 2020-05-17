@@ -1,0 +1,8 @@
+<div>
+    <form #formEdit="ngForm" (ngSubmit)="onSubmit()">
+        <label for="name">Nombre</label>
+        <input type="text" name="nameProvider " #nameProvider="ngModel" [(ngModel)]="provider.nameProvider ">
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>

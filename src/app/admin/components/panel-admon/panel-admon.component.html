@@ -1,5 +1,5 @@
 <!-- BARRA LATERAL MOVIL -->
-<nav id="movil" class="navbar navbar-expand-lg navbar-dark bg-secundario d-block d-md-none p-0">
+<nav id="movil" class="navbar navbar-expand-lg navbar-dark bg-secundario d-block d-md-none p-0 ">
     <a class="navbar-brand text-center" href="#">Administrar la tienda</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-chevron-down "></i> 
@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link pl-5" routerLinkActive="active" [routerLink]="['/admon/crear-proveedor']"><i class="fas fa-user mr-2"></i>Proveedores</a>
+                <a class="nav-link pl-5" routerLinkActive="active" [routerLink]="['/admon/listar-proveedores']"><i class="fas fa-user mr-2"></i>Proveedores</a>
 
             </li>
             <li class="nav-item">
@@ -25,8 +25,8 @@
 </nav>
 
 <!-- BARRA LATERAL PC-->
-<div id="aside" class="col-12 d-none d-md-block aside">
-    <aside class="esconder ">
+<div id="aside" class="col-12 d-none d-md-block aside offset-md-10">
+    <aside class="esconder">
         <h6 href="#" class="tienda">Administrar la tienda</h6>
 
         <ul class="navbar-nav">

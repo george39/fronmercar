@@ -52,6 +52,7 @@ export class RegisterComponent implements OnInit {
       surname: new FormControl(null, Validators.required),
       address: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
+      phone: new FormControl(null, [Validators.required]),
       password: new FormControl(null, Validators.required),
       password2: new FormControl(null),
     },  {validators: this.sonIguales('password', 'password2')});
@@ -72,6 +73,7 @@ export class RegisterComponent implements OnInit {
       this.forma.value.surname,
       this.forma.value.address,
       this.forma.value.email,
+      this.forma.value.phone,
       this.forma.value.password
       );
 

@@ -227,22 +227,33 @@ REDES SOCIALES
     background-color: rgb(70, 70, 70) !important;
 }
 
+@media (max-width: 768px) {
+    .sticky-top {
+        position: relative !important;
+        position: relative !important;
+        top: 0px !important;
+        z-index: 0;
+    }
+}
+
 
 /*****************************************************
 ASIDE
 ******************************************************/
 
 #aside {
-    //
+    // display: block;
     height: 150px;
     width: 20%;
-    float: right;
+    //margin-top: -30px;
     background-color: $secundario;
     border: 1px solid #1E1E1E;
     padding: 0;
     box-shadow: 2px 0px 2px $principal;
     overflow: auto;
     border-radius: 5px;
+    position: fixed;
+    // float: right;
 }
 
 .nav-link {
@@ -428,14 +439,14 @@ FORMULARIO LOGIN
 }
 
 #lista-proveedores {
-    width: 50%;
-    margin-left: 200px;
+    width: 70%;
+    margin-left: 50px;
 }
 
-@media (max-width: 768px) {
-    #lista-proveedores {
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-    }
-}
+// @media (max-width: 768px) {
+//     #lista-proveedores {
+//         width: 100%;
+//         padding: 0px;
+//         margin: 0px !important;
+//     }
+// }

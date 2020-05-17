@@ -28,7 +28,7 @@ export class ProviderComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.title = 'Crear un proveedor';
-    this.provider = new Provider('', '', '');
+    this.provider = new Provider('', '', '', '');
     this.identity = userService.getIdentity();
     this.token = userService.getToken();
    }
@@ -36,13 +36,13 @@ export class ProviderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form) {
+  onSubmit() {
     
     this.providerService.saveProvider(this.token, this.provider).subscribe(
       response => {
         Swal.fire('BUEN TRABAJO', 'El usuario ha sido creado', 'success');
         this.router.navigate(['/admon/listar-proveedores']);
-        form.reset();
+        
       },
       error => {
 
