@@ -4,7 +4,7 @@ export class Product {
         public id: string,
         public providerId: string,
         public name: string,
-        public priceHiger: number,
+        public priceHigher: number,
         public priceClient: number
     ) {}
 }

@@ -11,6 +11,8 @@ import { ProductComponent } from './components/product/product.component';
 import { AdminGuard } from '../services/admin.guard';
 import { ListProviderComponent } from './components/provider/list-provider.component';
 import { EditProviderComponent } from './components/provider/edit-provider.component';
+import { ListProductComponent } from './components/product/list-product.component';
+import { EditProductComponent } from './components/product/edit-product.component';
 
 
 
@@ -24,7 +26,9 @@ import { EditProviderComponent } from './components/provider/edit-provider.compo
     PanelAdmonComponent,
     ProductComponent,
     ListProviderComponent,
-    EditProviderComponent
+    EditProviderComponent,
+    ListProductComponent,
+    EditProductComponent
   ],
   imports: [
     CommonModule,

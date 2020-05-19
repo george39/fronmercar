@@ -439,14 +439,54 @@ FORMULARIO LOGIN
 }
 
 #lista-proveedores {
-    width: 70%;
-    margin-left: 50px;
+    width: 50%;
+    margin-left: 200px;
 }
 
-// @media (max-width: 768px) {
-//     #lista-proveedores {
-//         width: 100%;
-//         padding: 0px;
-//         margin: 0px !important;
-//     }
-// }
+@media (max-width: 768px) {
+    #lista-proveedores {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+
+/***********************************************************
+PANTALLA PRODUCTOS
+************************************************************/
+
+#product {
+    background-color: $secundario;
+    color: $principal;
+    margin-top: 20px;
+    margin-left: 400px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+}
+
+@media (max-width: 500px) {
+    #product {
+        width: 100% !important;
+        margin: 0px;
+    }
+}
+
+#list-product {
+    width: 75%;
+}
+
+.titulo {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #list-product {
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    #product {
+        width: 100% !important;
+    }
+}
