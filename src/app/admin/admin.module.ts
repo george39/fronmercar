@@ -13,6 +13,7 @@ import { ListProviderComponent } from './components/provider/list-provider.compo
 import { EditProviderComponent } from './components/provider/edit-provider.component';
 import { ListProductComponent } from './components/product/list-product.component';
 import { EditProductComponent } from './components/product/edit-product.component';
+import { DetailProductComponent } from './components/product/detail-product.component';
 
 
 
@@ -28,7 +29,8 @@ import { EditProductComponent } from './components/product/edit-product.componen
     ListProviderComponent,
     EditProviderComponent,
     ListProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    DetailProductComponent
   ],
   imports: [
     CommonModule,

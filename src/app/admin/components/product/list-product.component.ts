@@ -65,7 +65,7 @@ export class ListProductComponent implements OnInit {
     })
     
     swalWithBootstrapButtons.fire({
-      title: '¿Esta seguro de eliminar al producto? ' + name,
+      title: '¿Esta seguro de eliminar el producto? ' + name,
       text: "¡Si lo elimina no podrá recuperarlo!",
       icon: 'warning',
       showCancelButton: true,

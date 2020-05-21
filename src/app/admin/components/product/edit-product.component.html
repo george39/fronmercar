@@ -1,1 +1,41 @@
-<p>edit-product works!</p>
+<div class="row col-md-4" id="product" *ngIf="product">
+    <div class="container">
+        <div class="col-12">
+
+            <h2 class="text-center">{{title}}</h2>
+            <form #register="ngForm" (ngSubmit)="onSubmit()">
+
+                <div class=" ">
+                    <span class="titulo">Selecciones el proveedor </span>
+                    <select class="form-control" name="providerId" #providerId="ngModel" [(ngModel)]="seleccion">   
+                    <option value="">Elija el proveedor</option>
+                    <option *ngFor="let proveedor of provider"  [value]="proveedor.nameCompany" >{{proveedor.nameCompany}}</option>
+                    </select>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class=" form-control " name="providerId" #providerId="ngModel" [(ngModel)]="product.providerId" placeholder="Nombre del producto">
+                </div> -->
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class=" form-control " name="name" #name="ngModel" [(ngModel)]="product.name" placeholder="Nombre del producto">
+                </div>
+                <div class="form-group">
+                    <label for="priceHiger">Precio por mayor</label>
+                    <input type="number" class=" form-control " name="priceHigher" #priceHigher="ngModel" [(ngModel)]="product.priceHigher" placeholder="Precio por mayor">
+                </div>
+                <div class="form-group">
+                    <label for="priceClient">Precio cliente</label>
+                    <input type="number" class=" form-control " name="priceClient" #priceClient="ngModel" [(ngModel)]="product.priceClient" placeholder="Precio para el cliente">
+                </div>
+                <div class="form-group">
+                    <label for="image">Subir imagen</label>
+                    <input type="file" placeholder="Subir imagen" name="image" #image="ngModel" [(ngModel)]="product.image" (change)="fileChangeEvent($event)">
+                </div>
+
+                <button type="submit" class="btn btn-success btn-register offset-5">Guardar</button>
+            </form>
+        </div>
+
+    </div>
+</div>

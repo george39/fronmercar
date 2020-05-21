@@ -28,6 +28,10 @@
                     <label for="priceClient">Precio cliente</label>
                     <input type="number" class=" form-control " name="priceClient" #priceClient="ngModel" [(ngModel)]="product.priceClient" placeholder="Precio para el cliente">
                 </div>
+                <div class="form-group">
+                    <label for="image">Subir imagen</label>
+                    <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
+                </div>
 
                 <button type="submit" class="btn btn-success btn-register offset-5">Guardar</button>
             </form>

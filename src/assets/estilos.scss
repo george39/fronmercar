@@ -473,7 +473,7 @@ PANTALLA PRODUCTOS
 }
 
 #list-product {
-    width: 75%;
+    width: 70%;
 }
 
 .titulo {
@@ -489,4 +489,12 @@ PANTALLA PRODUCTOS
     #product {
         width: 100% !important;
     }
+}
+
+#image img {
+    width: 150px;
+    height: 200px;
+    margin-right: 100px;
+    margin-top: 30px;
+    margin-left: 30px;
 }

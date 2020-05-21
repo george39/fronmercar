@@ -1,0 +1,17 @@
+<div class="row" *ngIf="product">
+    <div class="container">
+        <h1 class="text-center mt-5">
+            {{title}}
+        </h1>
+    </div>
+    <div id="image">
+        <img src="{{url + '/get-image-product/' + product.image}}" alt="Imagen del producto">
+    </div>
+    <div id="detalles" class="mt-4">
+        <h5>Nombre: {{product.name}}</h5>
+        <h5>Proveedor: {{product.providerId}}</h5>
+        <h5>Precio por mayor: {{product.priceHigher}}</h5>
+        <h5>Precio cliente: {{product.priceClient}}</h5>
+    </div>
+</div>
+<a class="btn btn-success ml-5 mt-3" [routerLink]="['/admon/listar-productos']">Atras</a>

@@ -22,7 +22,7 @@ export class ProductService {
   /***********************************************
    GUARDAR UN PRODUCTO
   /***********************************************/
-  saveProduct(token, product) {
+  saveProduct(token, product): Observable<any> {
     let params = JSON.stringify(product);
     let headers = new HttpHeaders(({
       'Content-Type': 'application/json',

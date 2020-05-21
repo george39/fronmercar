@@ -11,6 +11,7 @@ import { ListProviderComponent } from './components/provider/list-provider.compo
 import { EditProviderComponent } from './components/provider/edit-provider.component';
 import { ListProductComponent } from './components/product/list-product.component';
 import { EditProductComponent } from './components/product/edit-product.component';
+import { DetailProductComponent } from './components/product/detail-product.component';
 
 
 
@@ -27,7 +28,8 @@ const adminRoutes: Routes = [
            {path: 'editar-proveedor/:id', component: EditProviderComponent},
            {path: 'crear-producto', component: ProductComponent},
            {path: 'listar-productos', component: ListProductComponent},
-           {path: 'editar-producto/:id', component: EditProductComponent}
+           {path: 'editar-producto/:id', component: EditProductComponent},
+           {path: 'detalles-producto/:id', component: DetailProductComponent}
 
            // { path: 'abarrotes', component: MainComponent }
         ]

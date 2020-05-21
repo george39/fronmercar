@@ -6,6 +6,8 @@ import { UserService } from '../../../services/user.service';
 import { Provider } from '../../../models/Provider';
 import { ProviderService } from '../../../services/provider.service';
 import Swal from 'sweetalert2';
+import { UploadService } from '../../../services/upload.service';
+import { GLOBAL } from '../../../../../../fronmercar1/src/app/services/global';
 
 
 
@@ -22,16 +24,24 @@ export class EditProductComponent implements OnInit {
   public provider: Provider;
   public token;
   public seleccion;
+  public url;
+  public precioMayor: number;
+  public precioClient: number;
+  public filesToUpload: Array<File>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
     private providerService: ProviderService,
-    private userService: UserService
+    private userService: UserService,
+    private uploadService: UploadService
   ) {
+    this.product = new Product('', '', '', this.precioMayor, this.precioClient, '');
+
     this.token = userService.getToken();
     this.title = 'Actualizar producto';
+    this.url = GLOBAL;
    }
 
   ngOnInit(): void {
@@ -41,7 +51,7 @@ export class EditProductComponent implements OnInit {
       let id = params.id;
       this.getProduct(id);
       
-    })
+    });
   }
 
 
@@ -71,22 +81,31 @@ export class EditProductComponent implements OnInit {
 
 
   onSubmit() {
-    
+    var id = this.product;
     this.product.providerId = this.seleccion;
-    this.productService.updateProduct(this.token, this.product).subscribe(
+    this.productService.updateProduct(this.token, id).subscribe(
       response => {
-        if (!response.product) {
-
-        } else {
+        if (response.product) {
           this.product = response.product;
-          Swal.fire('Buen trabajo', 'El prodcto fue actualizado correctamente', 'success');
-          this.router.navigate(['/admon/listar-productos']);
+
+          this.uploadService.makeFileRequest( this.url + '/upload-image-product/' + this.product._id, [],
+           this.filesToUpload, this.token, 'image')
+          .then((result: any) => {
+            this.product.image = result.image;
+            Swal.fire('Buen trabajo', 'Producto actualizado con éxito', 'success');
+            this.router.navigate(['/admon/listar-productos']);
+
+          });
         }
       },
       error => {
         console.log(error as any);
       }
     );
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = (fileInput.target.files as Array<File>);
   }
 
 }
