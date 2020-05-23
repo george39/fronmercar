@@ -1,0 +1,17 @@
+<div id="cards">
+    <div class="row">
+        <div *ngFor="let arroces of arroz" class="card">
+            <div>
+                <img src="{{url + '/get-image-arroz/' + arroces.image}}" alt="Imagen del producto" id="img-product">
+            </div>
+            <div class="pl-1 precio">
+                $ {{arroces.priceClient}}
+            </div>
+            <div class="pl-1">
+                {{arroces.name}}
+            </div>
+            <a href="" class="btn btn-success">Comprar</a>
+
+        </div>
+    </div>
+</div>

@@ -122,6 +122,7 @@ REDES SOCIALES
     color: $textobotones;
     width: 100%;
     padding: 0px !important;
+    transition: all 300ms;
     // padding-top: 3px;
 }
 
@@ -225,6 +226,11 @@ REDES SOCIALES
 #nav>div>ul>li>ul>li:hover {
     color: $principal !important;
     background-color: rgb(70, 70, 70) !important;
+    -webkit-transform: scale(1.09);
+    -moz-transform: scale(1.09);
+    -ms-transform: scale(1.09);
+    -o-transform: scale(1.09);
+    transform: scale(1.09);
 }
 
 @media (max-width: 768px) {
@@ -440,7 +446,7 @@ FORMULARIO LOGIN
 
 #lista-proveedores {
     width: 50%;
-    margin-left: 200px;
+    margin-left: 300px;
 }
 
 @media (max-width: 768px) {
@@ -449,6 +455,15 @@ FORMULARIO LOGIN
         padding: 0px;
         margin: 0px;
     }
+}
+
+
+/***********************************************************
+ BARRA LATERAL PARA CREAR PRODUTOS
+************************************************************/
+
+.crear-productos {
+    height: 400px !important;
 }
 
 
@@ -473,7 +488,8 @@ PANTALLA PRODUCTOS
 }
 
 #list-product {
-    width: 70%;
+    width: 55%;
+    margin-left: 300px;
 }
 
 .titulo {
@@ -496,5 +512,43 @@ PANTALLA PRODUCTOS
     height: 200px;
     margin-right: 100px;
     margin-top: 30px;
-    margin-left: 30px;
+    margin-left: 400px;
+}
+
+.ir-lista {
+    margin-left: 700px;
+}
+
+
+/***********************************************************
+ CARDS PARA LOS PRODUCTOS
+************************************************************/
+
+.card {
+    //float: left;
+    width: 205px;
+    height: 305px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #ddd;
+    overflow: hidden;
+    margin: 20px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+#img-product {
+    width: 200px;
+    height: 200px;
+}
+
+.precio {
+    color: red;
+}
+
+.card:hover {
+    -webkit-transform: scale(1.09);
+    -moz-transform: scale(1.09);
+    -ms-transform: scale(1.09);
+    -o-transform: scale(1.09);
+    transform: scale(1.09);
 }

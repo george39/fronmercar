@@ -23,6 +23,8 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { AddComponent } from './admin/components/add/add.component';
 import { AdminModule } from './admin/admin.module';
 import { AbarrotesModule } from './admin/components/abarrotes/abarrotes.module';
+import { ArrozComponent } from './components/abarrotes/arroz.component';
+import { AceiteComponent } from './components/abarrotes/aceite.component';
 
 
 
@@ -41,6 +43,10 @@ import { AbarrotesModule } from './admin/components/abarrotes/abarrotes.module';
     UserEditComponent,
     
     AddComponent,
+    
+    ArrozComponent,
+    
+    AceiteComponent,
     
   ],
   imports: [

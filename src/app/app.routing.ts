@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavAbarrotesComponent } from './components/shared/sidebar/nav-abarrotes/nav-abarrotes.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { ArrozComponent } from './admin/components/abarrotes/arroz.component';
-import { AceiteComponent } from './admin/components/abarrotes/aceite.component';
+import { ArrozComponent } from './components/abarrotes/arroz.component';
+import { AceiteComponent } from './components/abarrotes/aceite.component';
 
 
 

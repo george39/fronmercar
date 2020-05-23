@@ -14,6 +14,7 @@ import { EditProviderComponent } from './components/provider/edit-provider.compo
 import { ListProductComponent } from './components/product/list-product.component';
 import { EditProductComponent } from './components/product/edit-product.component';
 import { DetailProductComponent } from './components/product/detail-product.component';
+import { AddAceiteComponent } from './components/abarrotes/add-aceite.component';
 
 
 
@@ -30,7 +31,8 @@ import { DetailProductComponent } from './components/product/detail-product.comp
     EditProviderComponent,
     ListProductComponent,
     EditProductComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    AddAceiteComponent
   ],
   imports: [
     CommonModule,

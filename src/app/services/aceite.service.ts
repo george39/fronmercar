@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { GLOBAL } from './global';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Product } from '../models/product';
 import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { GLOBAL } from '../services/global';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArrozService {
+export class AceiteService {
 
   public url: string;
 
@@ -17,32 +16,30 @@ export class ArrozService {
     this.url = GLOBAL;
   }
 
-
   /***********************************************
-   CREAR ARROZ
+   CREAR ACEITE
   /***********************************************/
-  saveArroz(token, arroz): Observable<any> {
-    let params = JSON.stringify(arroz);
+  saveAceite(token, aceite): Observable<any> {
+    let params = JSON.stringify(aceite);
     let headers = new HttpHeaders(({
       'Content-Type': 'application/json',
       Authorization: token
     }));
 
-    return this.http.post(this.url + '/save-arroz', params, {headers} );
+    return this.http.post(this.url + '/save-aceite', params, {headers} );
   }
 
 
   /***********************************************
-   LISTAR TODOS LOS ARROCES
+   LISTAR TODOS LOS ACEITES
   /***********************************************/
-  getArroz(token, arroz): Observable<any>{
+  getAceite(token): Observable<any>{
     let headers = new HttpHeaders(({
       'Content-Type': 'application/json',
       Authorization: token
     }));
 
 
-    return this.http.get(this.url + '/get-arroz', {headers});
+    return this.http.get(this.url + '/get-aceite', {headers});
   }
 }
-
