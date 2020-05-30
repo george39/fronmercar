@@ -4,7 +4,7 @@ import { ADMIN_ROUTES } from './admin.routing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/main/main.component';
-import { ArrozComponent } from './components/abarrotes/arroz.component';
+import { ArrozComponent } from './components/abarrotes/arroz/arroz.component';
 import { ProviderComponent } from './components/provider/provider.component';
 import { PanelAdmonComponent } from './components/panel-admon/panel-admon.component';
 import { ProductComponent } from './components/product/product.component';
@@ -15,6 +15,10 @@ import { ListProductComponent } from './components/product/list-product.componen
 import { EditProductComponent } from './components/product/edit-product.component';
 import { DetailProductComponent } from './components/product/detail-product.component';
 import { AddAceiteComponent } from './components/abarrotes/add-aceite.component';
+import { EditArrozComponent } from './components/abarrotes/arroz/edit-arroz.component';
+import { VentasComponent } from './components/main/ventas.component';
+import { ProductPipe } from './pipes/product.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 
@@ -32,7 +36,11 @@ import { AddAceiteComponent } from './components/abarrotes/add-aceite.component'
     ListProductComponent,
     EditProductComponent,
     DetailProductComponent,
-    AddAceiteComponent
+    AddAceiteComponent,
+    EditArrozComponent,
+    VentasComponent,
+    ProductPipe,
+    SearchPipe
   ],
   imports: [
     CommonModule,

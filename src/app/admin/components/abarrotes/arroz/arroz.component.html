@@ -1,6 +1,7 @@
 <div class="row col-md-4" id="product" *ngIf="arroz">
     <div class="container">
         <div class="col-12">
+            <a [routerLink]="['/admon/editar-arroz']">Editar</a>
 
             <h2 class="text-center">{{title}}</h2>
             <form #register="ngForm" (ngSubmit)="onSubmit()">
@@ -12,13 +13,18 @@
                     <option *ngFor="let proveedor of provider"  [value]="proveedor.nameCompany" >{{proveedor.nameCompany}}</option>
                     </select>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" class=" form-control " name="providerId" #providerId="ngModel" [(ngModel)]="product.providerId" placeholder="Nombre del producto">
-                </div> -->
+
                 <div class="form-group">
                     <label for="name">Nombre</label>
                     <input type="text" class=" form-control " name="name" #name="ngModel" [(ngModel)]="arroz.name" placeholder="Nombre del producto">
+                </div>
+                <div class="form-group">
+                    <label for="code">Código de barras</label>
+                    <input type="text" class=" form-control " name="code" #code="ngModel" [(ngModel)]="arroz.code" placeholder="Código del producto">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" class=" form-control " name="quantity" #quantity="ngModel" [(ngModel)]="arroz.quantity" placeholder="Nombre del producto">
                 </div>
                 <div class="form-group">
                     <label for="priceHiger">Precio por mayor</label>
@@ -33,7 +39,8 @@
                     <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
                 </div>
 
-                <button type="submit" class="btn btn-success btn-register offset-5">Guardar</button>
+
+                <button type="submit" (click)="saveProduct()" class="btn btn-success btn-register offset-5">Guardar</button>
             </form>
         </div>
 

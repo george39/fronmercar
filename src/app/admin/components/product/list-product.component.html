@@ -1,3 +1,8 @@
+<div class="row col-md-2 pt-2 mb-2">
+    <input type="text" #bus="ngModel" class="form-control" #lectura autofocus name="lectura" [(ngModel)]="busqueda" placeholder="Lea el código de barras">
+</div>
+
+
 <a class="btn btn-success mt-5 offset-md-8" [routerLink]="['/admon/crear-producto']">Crear un producto</a>
 <div class="row offset-md-1" id="list-product">
     <div class="container">
@@ -17,7 +22,7 @@
                     <th>Eliminar</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let producto of product">
+            <tbody *ngFor="let producto of product | search: busqueda">
                 <tr>
 
                     <td>{{producto.name}}</td>

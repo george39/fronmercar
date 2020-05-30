@@ -23,6 +23,7 @@ export class AddAceiteComponent implements OnInit {
   public identity;
   public aceite: Product;
   public provider: Provider;
+  public quantity: number;
   public precioMayor: number;
   public precioClient: number;
   public seleccion;
@@ -42,7 +43,7 @@ export class AddAceiteComponent implements OnInit {
   ) { 
     // this.precioClient = 0;
     // this.precioMayor = 0;
-    this.aceite = new Product('', '', '', this.precioMayor, this.precioClient, '');
+    this.aceite = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
     this.title = 'Crear aceite';
     this.token = userService.getToken();
     this.identity = userService.getIdentity();

@@ -12,8 +12,10 @@ import { EditProviderComponent } from './components/provider/edit-provider.compo
 import { ListProductComponent } from './components/product/list-product.component';
 import { EditProductComponent } from './components/product/edit-product.component';
 import { DetailProductComponent } from './components/product/detail-product.component';
-import { ArrozComponent } from './components/abarrotes/arroz.component';
+import { ArrozComponent } from './components/abarrotes/arroz/arroz.component';
 import { AddAceiteComponent } from './components/abarrotes/add-aceite.component';
+import { EditArrozComponent } from './components/abarrotes/arroz/edit-arroz.component';
+import { VentasComponent } from './components/main/ventas.component';
 
 
 
@@ -23,7 +25,7 @@ const adminRoutes: Routes = [
         component: MainComponent,
         canActivate: [AdminGuard],
         children: [
-            {path: '', redirectTo: 'listar-proveedores', pathMatch: 'full'},
+            {path: '', redirectTo: 'ventas', pathMatch: 'full'},
            // {path: 'panel', component: PanelAdmonComponent},
            {path: 'crear-proveedor', component: ProviderComponent},
            {path: 'listar-proveedores', component: ListProviderComponent},
@@ -33,7 +35,9 @@ const adminRoutes: Routes = [
            {path: 'editar-producto/:id', component: EditProductComponent},
            {path: 'detalles-producto/:id', component: DetailProductComponent},
            {path: 'crear-arroz', component: ArrozComponent},
-           {path: 'crear-aceite', component: AddAceiteComponent}
+           {path: 'editar-arroz', component: EditArrozComponent},
+           {path: 'crear-aceite', component: AddAceiteComponent},
+           {path: 'ventas', component: VentasComponent}
 
            // { path: 'abarrotes', component: MainComponent }
         ]

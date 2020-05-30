@@ -1,0 +1,19 @@
+<div class="row " id="table-arroz">
+    <a [routerLink]="['/admon/editar-arroz']">Editar</a>
+    <div class="col">
+        <table class="table table-hover table-dark">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let arroces of arroz">
+                <tr>
+                    <td>{{arroces.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

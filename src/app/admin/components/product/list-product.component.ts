@@ -3,6 +3,7 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../models/product';
 import { UserService } from '../../../services/user.service';
 import Swal from 'sweetalert2';
+import { ArrozService } from '../../../services/arroz.service';
 
 
 
@@ -19,11 +20,12 @@ export class ListProductComponent implements OnInit {
   public product: Product;
   
   public token;
+  public busqueda;
 
   constructor(
     private userService: UserService,
     private productService: ProductService,
-    
+    private arrozService: ArrozService
   ) { 
     this.title = 'Lista de productos';
     this.token = userService.getToken();
@@ -98,7 +100,24 @@ export class ListProductComponent implements OnInit {
   deleteProduct(id) {
     this.productService.deleteProduct(this.token, id).subscribe(
       response => {
-        if (!response.provider) {
+        if (!response.product) {
+          Swal.fire('Atención', 'El producto no se borro', 'warning');
+        }
+        this.getProduct();
+        Swal.fire('Buen trabajo', 'El producto se borro correctamente', 'success');
+
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+  }
+
+
+  deleteArroz(id) {
+    this.arrozService.deleteArroz(this.token, id).subscribe(
+      response => {
+        if (!response.product) {
           Swal.fire('Atención', 'El producto no se borro', 'warning');
         }
         this.getProduct();

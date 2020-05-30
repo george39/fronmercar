@@ -1,14 +1,25 @@
 <div id="cards">
     <div class="row">
         <div *ngFor="let aceites of aceite" class="card">
-            <div>
-                <img src="{{url + '/get-image-aceite/' + aceites.image}}" alt="Imagen del producto" id="img-product">
+            <div *ngIf="identity.role === 'ADMIN_ROLE'">
+                <a type="button" class="btn btn-primary" (click)="alerta(aceites.name, aceites._id)" class="btn btn-danger mt-1"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
             </div>
-            <div class="pl-1 precio">
-                $ {{aceites.priceClient}}
-            </div>
-            <div class="pl-1">
-                {{aceites.name}}
+            <div class="pl-1" *ngFor="let producto of product">
+                <div *ngIf="aceites.code === producto.code">
+                    <img src="{{url + '/get-image-product/' + producto.image}}" alt="Imagen del producto" id="img-product">
+                </div>
+                <div *ngIf="aceites.code === producto.code && producto.quantity > 0">
+                    <div class="pl-1 precio">
+                        $ {{producto.priceClient}}
+                    </div>
+                    <div class="pl-1">
+                        {{producto.name}}
+                    </div>
+                    Disponible {{producto.quantity}}
+                </div>
+                <div *ngIf="aceites.code === producto.code && producto.quantity === 0">
+                    Producto no disponible
+                </div>
             </div>
             <a href="" class="btn btn-success">Comprar</a>
 

@@ -21,6 +21,14 @@
                     <input type="text" class=" form-control " name="name" #name="ngModel" [(ngModel)]="aceite.name" placeholder="Nombre del producto">
                 </div>
                 <div class="form-group">
+                    <label for="code">Código de barras</label>
+                    <input type="text" class=" form-control " name="code" #code="ngModel" [(ngModel)]="aceite.code" placeholder="Código del producto">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="text" class=" form-control " name="quantity" #quantity="ngModel" [(ngModel)]="aceite.quantity" placeholder="Cantidad del producto">
+                </div>
+                <div class="form-group">
                     <label for="priceHiger">Precio por mayor</label>
                     <input type="number" class=" form-control " name="priceHigher" #priceHigher="ngModel" [(ngModel)]="aceite.priceHigher" placeholder="Precio por mayor">
                 </div>

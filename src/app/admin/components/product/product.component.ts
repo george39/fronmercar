@@ -11,6 +11,8 @@ import { GLOBAL } from '../../../services/global';
 
 
 import Swal from 'sweetalert2';
+import { ArrozService } from '../../../services/arroz.service';
+import { AceiteService } from '../../../services/aceite.service';
 
 
 
@@ -19,7 +21,7 @@ import Swal from 'sweetalert2';
   templateUrl: './product.component.html',
   styles: [
   ],
-  providers: [UploadService]
+  providers: [UploadService, ArrozService]
 })
 export class ProductComponent implements OnInit {
 
@@ -29,35 +31,47 @@ export class ProductComponent implements OnInit {
   public token;
   public identity;
   public product: Product;
+  public arroz: Product;
+  public aceite: Product;
   public provider: Provider;
+  public quantity: number;
   public precioMayor: number;
   public precioClient: number;
   public seleccion;
+  public seleccionProducto;
   public filesToUpload: Array<File>;
   public url: string;
 
   public proveedor;
+  public productos: any[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private productService: ProductService,
+    private arrozService: ArrozService,
+    private aceiteService: AceiteService,
     private providerService: ProviderService,
     private uploadService: UploadService
     
   ) { 
     // this.precioClient = 0;
     // this.precioMayor = 0;
-    this.product = new Product('', '', '', this.precioMayor, this.precioClient, '');
+    this.product = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
+    this.arroz = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
     this.title = 'Crear un producto';
     this.token = userService.getToken();
     this.identity = userService.getIdentity();
     this.url = GLOBAL;
+    this.seleccionProducto = '';
+
+    this.productos = ['arroz', 'aceite'];
   }
 
   ngOnInit(): void {
     this.getProvider();
+    
     
   }
 
@@ -96,8 +110,55 @@ export class ProductComponent implements OnInit {
             this.router.navigate(['/admon/listar-productos']);
 
 
-            
+
           });
+        }
+
+
+
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+  }
+
+
+
+  /***********************************************
+   GUARDAR UN ARROZ
+  /***********************************************/
+  saveArroz() {
+    this.product.providerId = this.seleccion;
+        
+    this.arrozService.saveArroz(this.token, this.product).subscribe(
+      response => {
+        
+        if (response.product) {
+          this.product = response.product;         
+        }
+
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+  }
+
+
+
+  /***********************************************
+   GUARDAR UN ACEITE
+  /***********************************************/
+  saveAceite() {
+    this.product.providerId = this.seleccion;
+    console.log('produc', this.product);
+    this.aceiteService.saveAceite(this.token, this.product).subscribe(
+      response => {
+        
+        
+        if (response.product) {
+        this.product = response.product;
         }
 
 
@@ -114,6 +175,7 @@ export class ProductComponent implements OnInit {
   /***********************************************/
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = (fileInput.target.files as Array<File>);
+    console.log('files', this.filesToUpload);
   }
  
 }

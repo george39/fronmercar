@@ -35,7 +35,7 @@ export class ArrozService {
   /***********************************************
    LISTAR TODOS LOS ARROCES
   /***********************************************/
-  getArroz(token, arroz): Observable<any>{
+  getArroz(token): Observable<any>{
     let headers = new HttpHeaders(({
       'Content-Type': 'application/json',
       Authorization: token
@@ -43,6 +43,33 @@ export class ArrozService {
 
 
     return this.http.get(this.url + '/get-arroz', {headers});
+  }
+
+
+  /***********************************************
+   ACTUALIZAR ARROZ
+  /***********************************************/
+  updateArroz(token, arroz): Observable<any>{
+    let params = JSON.stringify(arroz);
+    let headers = new HttpHeaders(({
+      'Content-Type': 'application/json',
+      Authorization: token
+    }));
+
+    return this.http.put(this.url + '/update-arroz/' + arroz._id, params, {headers});
+  }
+
+  /***********************************************
+   ELIMINAR UN ARROZ
+  /***********************************************/
+  deleteArroz(token, id): Observable<any>{
+    
+    let headers = new HttpHeaders(({
+      'Content-Type': 'application/json',
+      Authorization: token
+    }));
+
+    return this.http.delete(this.url + '/delete-arroz/' + id, {headers});
   }
 }
 

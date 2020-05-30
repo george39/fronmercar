@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
-import { Provider } from '../../../models/Provider';
+import { Provider } from '../../../../models/Provider';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
-import { ProviderService } from '../../../services/provider.service';
-import { UploadService } from '../../../services/upload.service';
-import { GLOBAL } from '../../../../../../fronmercar1/src/app/services/global';
-import { ArrozService } from '../../../services/arroz.service';
+import { UserService } from '../../../../services/user.service';
+import { ProviderService } from '../../../../services/provider.service';
+import { UploadService } from '../../../../services/upload.service';
+import { GLOBAL } from '../../../../services/global';
+import { ArrozService } from '../../../../services/arroz.service';
 import Swal from 'sweetalert2';
+import { ProductService } from '../../../../services/product.service';
 
 
 
@@ -24,6 +25,7 @@ export class ArrozComponent implements OnInit {
   public identity;
   public arroz: Product;
   public provider: Provider;
+  public quantity: number;
   public precioMayor: number;
   public precioClient: number;
   public seleccion;
@@ -38,12 +40,13 @@ export class ArrozComponent implements OnInit {
     private userService: UserService,
     private arrozService: ArrozService,
     private providerService: ProviderService,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private productService: ProductService
     
   ) { 
     // this.precioClient = 0;
     // this.precioMayor = 0;
-    this.arroz = new Product('', '', '', this.precioMayor, this.precioClient, '');
+    this.arroz = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
     this.title = 'Crear arroz';
     this.token = userService.getToken();
     this.identity = userService.getIdentity();
@@ -52,6 +55,8 @@ export class ArrozComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProvider();
+    this.getArroz();
+  
     
   }
 
@@ -67,6 +72,9 @@ export class ArrozComponent implements OnInit {
       }
     );
   }
+
+
+  
 
 
 
@@ -96,6 +104,38 @@ export class ArrozComponent implements OnInit {
 
 
 
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+  }
+
+
+  /***********************************************
+   GUARDAR EN PRODUCTOS
+  /***********************************************/
+  saveProduct() {
+    this.arroz.providerId = this.seleccion;
+    this.productService.saveProduct(this.token, this.arroz).subscribe(
+      response => {
+        
+      },
+      error => {
+
+        console.log(error as any);
+      }
+    );
+  }
+
+
+  /***********************************************
+   LIATAR TODOS LOS ARROCES
+  /***********************************************/
+  getArroz() {
+    this.arrozService.getArroz(this.token).subscribe(
+      response => {
+        this.arroz = response.arroz;
       },
       error => {
         console.log(error as any);

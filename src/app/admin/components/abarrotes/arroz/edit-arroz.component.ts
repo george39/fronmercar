@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../models/product';
+import { Product } from '../../../../models/product';
+import { Provider } from '../../../../models/Provider';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../../services/product.service';
-import { UserService } from '../../../services/user.service';
-import { Provider } from '../../../models/Provider';
-import { ProviderService } from '../../../services/provider.service';
+import { ProductService } from '../../../../services/product.service';
+import { ProviderService } from '../../../../services/provider.service';
+import { UserService } from '../../../../services/user.service';
+import { UploadService } from '../../../../services/upload.service';
+import { ArrozService } from '../../../../services/arroz.service';
+import { GLOBAL } from '../../../../services/global';
 import Swal from 'sweetalert2';
-import { UploadService } from '../../../services/upload.service';
-import { GLOBAL } from '../../../../../../fronmercar1/src/app/services/global';
-import { ArrozService } from '../../../services/arroz.service';
-import { AceiteService } from '../../../services/aceite.service';
-
-
 
 @Component({
-  selector: 'app-edit-product',
-  templateUrl: './product.component.html',
+  selector: 'app-edit-arroz',
+  templateUrl: './arroz.component.html',
   styles: [
   ]
 })
-export class EditProductComponent implements OnInit {
+export class EditArrozComponent implements OnInit {
 
   public title: string;
   public product: Product;
@@ -42,10 +39,9 @@ export class EditProductComponent implements OnInit {
     private providerService: ProviderService,
     private userService: UserService,
     private uploadService: UploadService,
-    public arrozService: ArrozService,
-    public aceiteService: AceiteService
+    public arrozService: ArrozService
   ) {
-    this.product = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
+    this.arroz = new Product('', '', '', '', this.quantity, this.precioMayor, this.precioClient, '');
 
     this.token = userService.getToken();
     this.title = 'Actualizar producto';
@@ -57,6 +53,7 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProviders();
+    this.getArroces();
 
     this.route.params.subscribe(params => {
       let id = params.id;
@@ -92,9 +89,9 @@ export class EditProductComponent implements OnInit {
 
 
   onSubmit() {
-    var id = this.product;
-    this.product.providerId = this.seleccion;
-    this.productService.updateProduct(this.token, id).subscribe(
+    var id = this.arroz;
+    this.arroz.providerId = this.seleccion;
+    this.arrozService.updateArroz(this.token, id).subscribe(
       response => {
         if (response.product) {
           this.product = response.product;
@@ -116,20 +113,13 @@ export class EditProductComponent implements OnInit {
   }
 
 
-
   /***********************************************
-   GUARDAR UN ARROZ
+   LISTAR TODO EL ARROZ
   /***********************************************/
-  saveArroz() {
-    this.product.providerId = this.seleccion;
-    console.log('produc', this.product);
-    this.arrozService.updateArroz(this.token, this.product).subscribe(
+  getArroces() {
+    this.arrozService.getArroz(this.token).subscribe(
       response => {
-        
-        if (response.product) {
-          this.product = response.product;          
-          
-        }
+        this.arroz = response.arroz;
       },
       error => {
         console.log(error as any);
@@ -138,26 +128,24 @@ export class EditProductComponent implements OnInit {
   }
 
 
-
   /***********************************************
-   GUARDAR UN ACEITE
+   GUARDAR EN PRODUCTOS
   /***********************************************/
-  saveAceite() {
-    this.product.providerId = this.seleccion;
-    console.log('produc', this.product);
-    this.aceiteService.updateAceite(this.token, this.product).subscribe(
+  saveProduct() {
+    this.arroz.providerId = this.seleccion;
+    this.productService.saveProduct(this.token, this.arroz).subscribe(
       response => {
         
-        if (response.product) {
-          this.product = response.product;          
-          
-        }
       },
       error => {
+
         console.log(error as any);
       }
     );
   }
+
+
+
 
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = (fileInput.target.files as Array<File>);

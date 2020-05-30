@@ -1,16 +1,35 @@
 <div id="cards">
     <div class="row">
         <div *ngFor="let arroces of arroz" class="card">
-            <div>
-                <img src="{{url + '/get-image-arroz/' + arroces.image}}" alt="Imagen del producto" id="img-product">
+            <div *ngIf="identity.role === 'ADMIN_ROLE'">
+                <a type="button" class="btn btn-primary" (click)="alerta(arroces.name, arroces._id)" class="btn btn-danger mt-1"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
             </div>
-            <div class="pl-1 precio">
-                $ {{arroces.priceClient}}
+            <div class="pl-1" *ngFor="let producto of product">
+                <div *ngIf="arroces.code === producto.code">
+                    <img src="{{url + '/get-image-product/' + producto.image}}" alt="Imagen del producto" id="img-product">
+                </div>
+                <div *ngIf="arroces.code === producto.code && producto.quantity > 0">
+                    <div class="pl-1 precio">
+                        $ {{producto.priceClient}}
+                    </div>
+                    <div class="pl-1">
+                        {{producto.name}}
+                    </div>
+                    Disponible {{producto.quantity}}
+                </div>
+                <div *ngIf="arroces.code === producto.code && producto.quantity === 0">
+                    Producto no disponible
+                </div>
             </div>
-            <div class="pl-1">
-                {{arroces.name}}
-            </div>
-            <a href="" class="btn btn-success">Comprar</a>
+            <a href=" " class="btn btn-success ">Comprar</a>
+            <!-- <div *ngIf="identity.role === 'ADMIN_ROLE'">
+                <div *ngFor="let prod of arroz;let primero = first ">
+
+                    <td *ngIf="primero ">
+                        <a type="button" class="btn btn-primary" (click)="alerta(prod.name, prod._id)" class="btn btn-danger mt-1"><i class="fas fa-trash-alt mr-2"></i>Eliminar</a>
+                    </td>
+                </div>
+            </div> -->
 
         </div>
     </div>

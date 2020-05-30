@@ -5,6 +5,14 @@
             <h2 class="text-center">{{title}}</h2>
             <form #register="ngForm" (ngSubmit)="onSubmit()">
 
+                <div>
+                    <span class="titulo">Selecciones el producto </span>
+                    <select class="form-control" name="seleccionProducto" [(ngModel)]="seleccionProducto">   
+                    <option value="">Elija el producto</option>
+                    <option *ngFor="let product of productos"  [value]="product" >{{product}}</option>
+                    </select>
+                </div>
+
                 <div class=" ">
                     <span class="titulo">Selecciones el proveedor </span>
                     <select class="form-control" name="providerId" #providerId="ngModel" [(ngModel)]="seleccion">   
@@ -21,6 +29,14 @@
                     <input type="text" class=" form-control " name="name" #name="ngModel" [(ngModel)]="product.name" placeholder="Nombre del producto">
                 </div>
                 <div class="form-group">
+                    <label for="code">Código de barras</label>
+                    <input type="text" class=" form-control " name="control" #control="ngModel" [(ngModel)]="product.code" placeholder="Código">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" class=" form-control " name="quantity" #quantity="ngModel" [(ngModel)]="product.quantity" placeholder="Cantidad">
+                </div>
+                <div class="form-group">
                     <label for="priceHiger">Precio por mayor</label>
                     <input type="number" class=" form-control " name="priceHigher" #priceHigher="ngModel" [(ngModel)]="product.priceHigher" placeholder="Precio por mayor">
                 </div>
@@ -33,7 +49,15 @@
                     <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
                 </div>
 
-                <button type="submit" class="btn btn-success btn-register offset-5">Guardar</button>
+                <div *ngIf="seleccionProducto === 'arroz'">
+                    <button type="submit" (click)="saveArroz()" class="btn btn-success btn-register offset-5">Guardar arroz</button>
+                </div>
+
+                <div *ngIf="seleccionProducto === 'aceite'">
+                    <button type="submit" (click)="saveAceite()" class="btn btn-success btn-register offset-5">Guardar aceite</button>
+                </div>
+
+                <!-- <button type="submit" class="btn btn-success btn-register offset-5">Guardar</button> -->
             </form>
         </div>
 
