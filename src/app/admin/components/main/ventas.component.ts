@@ -13,6 +13,8 @@ export class VentasComponent implements OnInit, DoCheck {
 
   @ViewChild('name') name: ElementRef;
   @ViewChild('priceClient') priceClient: ElementRef;
+  @ViewChild('code') code: ElementRef;
+  @ViewChild('quantity') quantity: ElementRef;
 
   public title: string;
   public token;
@@ -20,7 +22,9 @@ export class VentasComponent implements OnInit, DoCheck {
   public prod: any[];
   public dataarray: any[];
   public precioCliente: string[];
+  public codigo: string[];
   public nombre: string[];
+  public cantidad: number[];
   public busqueda;
 
   constructor(
@@ -33,7 +37,9 @@ export class VentasComponent implements OnInit, DoCheck {
     this.nombre = new Array();
     this.precioCliente = new Array();
     this.prod = new Array();
+    this.codigo = new Array();
     this.dataarray = new Array();
+    this.cantidad = new Array();
   }
 
   ngOnInit(): void {
@@ -54,7 +60,7 @@ export class VentasComponent implements OnInit, DoCheck {
     this.productService.getProducts(this.token).subscribe(
       response => {
         this.product = response.product;
-        
+        console.log('productos', this.product);
       },
       error => {
         console.log(error as any);
@@ -71,7 +77,10 @@ export class VentasComponent implements OnInit, DoCheck {
     
     this.nombre.push(this.name.nativeElement.value);
     this.precioCliente.push(this.priceClient.nativeElement.value);
-    this.prod.push(this.name.nativeElement.value);
+    // this.prod.push(this.name.nativeElement.value);
+    this.prod.push(this.code.nativeElement.value);
+    this.codigo.push(this.code.nativeElement.value);
+    
     this.dataarray.push(this.prod);
 
     //this.addItems();
@@ -85,34 +94,52 @@ export class VentasComponent implements OnInit, DoCheck {
    /***********************************************/
   removeForm(index) {
        
-     this.nombre.splice(index, 1);
-     this.precioCliente.splice(index, 1);
-     this.dataarray.splice(index, 1);
-
-    //  for (var i = 0; i < this.prod.length; i++) {
-    //     console.log('i', i);
-    //     this.prod.splice(index[i], 1);
-    //     console.log('prod for', this.prod);
-    //  }
-     this.prod.splice(index, 1);
-     console.log('prod borrado', this.prod);
-     console.log('dataarray borrado', this.dataarray);
+    this.nombre.splice(index, 1);
+    this.precioCliente.splice(index, 1);
+    this.dataarray.splice(index, 1);
+    this.cantidad.splice(index, 1);
+    this.prod.splice(index, 1);
+    
+    console.log('prod borrado', this.prod);
+    console.log('dataarray borrado', this.dataarray);
      
     }
     
-    onSubmit() {
-      console.log('datos', this.dataarray);
-      console.log('datos2', this.prod);
-    }
+  onSubmit() {
+    console.log('datos', this.dataarray);
+    console.log('datos2', this.prod);
+    console.log('cantida', this.codigo);
+    this.productService.getProducts(this.token).subscribe(
+      response => {
+        this.product = response.product;
+        response.product.forEach((cantid) => {
+          this.codigo.forEach((cod) => {
+            
+            if (cod === cantid.code) {
+              var cant = this.cantidad;
+              //cantid.quantity = cantid.quantity + cant;
+              console.log('cantidad', cant);
+            }
+            
+          });
+          
+        });
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+    
+  }
     
     
-    addItems() {
-    
-    this.nombre.push(this.name.nativeElement.value);
-    this.precioCliente.push(this.priceClient.nativeElement.value);
-    this.prod.push(this.name.nativeElement.value);
-    this.prod.push(this.priceClient.nativeElement.value);
-    console.log('prod', this.prod);
+  addItems() {
+  
+  this.nombre.push(this.name.nativeElement.value);
+  this.precioCliente.push(this.priceClient.nativeElement.value);
+  this.prod.push(this.name.nativeElement.value);
+  this.prod.push(this.priceClient.nativeElement.value);
+  console.log('prod', this.prod);
   }
 
 }
