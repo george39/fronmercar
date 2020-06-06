@@ -19,10 +19,13 @@ export class VentasComponent implements OnInit, DoCheck {
   public title: string;
   public token;
   public product: Product;
+  public product2: Product;
   public prod: any[];
   public dataarray: any[];
+  public productos: any[];
   public precioCliente: string[];
   public codigo: string[];
+  public cant: number;
   public nombre: string[];
   public cantidad: number[];
   public busqueda;
@@ -40,6 +43,8 @@ export class VentasComponent implements OnInit, DoCheck {
     this.codigo = new Array();
     this.dataarray = new Array();
     this.cantidad = new Array();
+    this.productos = new Array();
+    this.cant = 0;
   }
 
   ngOnInit(): void {
@@ -73,20 +78,47 @@ export class VentasComponent implements OnInit, DoCheck {
    AGREGAR ITEMS
   /***********************************************/
   addForm() {
-    //this.getProduct();
-    
-    this.nombre.push(this.name.nativeElement.value);
-    this.precioCliente.push(this.priceClient.nativeElement.value);
-    // this.prod.push(this.name.nativeElement.value);
-    this.prod.push(this.code.nativeElement.value);
+
     this.codigo.push(this.code.nativeElement.value);
     
-    this.dataarray.push(this.prod);
+    this.productService.getProducts(this.token).subscribe(
+      response => {
+        this.product = response.product;
+        response.product.forEach((cantid) => {
+          
+            
+            
+            var cant = this.cantidad;
+            var id = cantid._id;
+            this.productService.getProduct(this.token, id).subscribe(
+              response => {
+                this.product2 = response.product;
+                if (this.busqueda === cantid.code) {
+                  this.productos.push(this.product2);
+                  this.productos.forEach((cod) => {
+                    if (this.busqueda === cod.code) {
+                      console.log('code', cod.code);
+                    }
+                  });
+                  // this.cant = 0;
+                  this.busqueda = '';
+                  console.log('productos', this.productos);
+                  
+                  
 
-    //this.addItems();
-    this.busqueda = '';
-    console.log('arrayitems ingreso', this.dataarray);
-    console.log('prod', this.prod);
+                }
+                }
+              );
+
+        });
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+
+    
+
   }
   
   /***********************************************
@@ -100,15 +132,14 @@ export class VentasComponent implements OnInit, DoCheck {
     this.cantidad.splice(index, 1);
     this.prod.splice(index, 1);
     
-    console.log('prod borrado', this.prod);
-    console.log('dataarray borrado', this.dataarray);
+    
+
+
+    
      
     }
     
   onSubmit() {
-    console.log('datos', this.dataarray);
-    console.log('datos2', this.prod);
-    console.log('cantida', this.codigo);
     this.productService.getProducts(this.token).subscribe(
       response => {
         this.product = response.product;
@@ -117,8 +148,17 @@ export class VentasComponent implements OnInit, DoCheck {
             
             if (cod === cantid.code) {
               var cant = this.cantidad;
+              var id = cantid._id;
+              this.productService.getProduct(this.token, id).subscribe(
+                response => {
+
+                  this.product2 = response.product;
+                  this.dataarray.push(this.product2);
+                  console.log('cantidad', this.dataarray);
+                }
+              );
+              
               //cantid.quantity = cantid.quantity + cant;
-              console.log('cantidad', cant);
             }
             
           });
@@ -129,6 +169,7 @@ export class VentasComponent implements OnInit, DoCheck {
         console.log(error as any);
       }
     );
+    
     
   }
     
