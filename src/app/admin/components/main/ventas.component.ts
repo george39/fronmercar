@@ -30,6 +30,10 @@ export class VentasComponent implements OnInit, DoCheck {
   public cantidad: number[];
   public busqueda;
 
+  public codigoRepetido;
+  public repetido;
+  public dobles: any[];
+
   constructor(
     private userService: UserService,
     private productService: ProductService
@@ -44,7 +48,11 @@ export class VentasComponent implements OnInit, DoCheck {
     this.dataarray = new Array();
     this.cantidad = new Array();
     this.productos = new Array();
+    this.dobles = new Array();
     this.cant = 0;
+
+    this.codigoRepetido = true;
+    this.repetido = [];
   }
 
   ngOnInit(): void {
@@ -79,32 +87,29 @@ export class VentasComponent implements OnInit, DoCheck {
   /***********************************************/
   addForm() {
 
-    this.codigo.push(this.code.nativeElement.value);
-    
     this.productService.getProducts(this.token).subscribe(
       response => {
         this.product = response.product;
         response.product.forEach((cantid) => {
-          
-            
-            
-            var cant = this.cantidad;
+
+
             var id = cantid._id;
             this.productService.getProduct(this.token, id).subscribe(
               response => {
                 this.product2 = response.product;
                 if (this.busqueda === cantid.code) {
+
+
                   this.productos.push(this.product2);
-                  this.productos.forEach((cod) => {
-                    if (this.busqueda === cod.code) {
-                      console.log('code', cod.code);
-                    }
-                  });
-                  // this.cant = 0;
-                  this.busqueda = '';
+                  let hash = {};
+                  this.productos = this.productos.filter(codigo => hash[codigo.code]
+                                    ? false : hash[codigo.code] = true);
+
                   console.log('productos', this.productos);
-                  
-                  
+
+                  this.busqueda = '';
+
+
 
                 }
                 }
@@ -116,10 +121,50 @@ export class VentasComponent implements OnInit, DoCheck {
         console.log(error as any);
       }
     );
-
-    
-
   }
+
+
+  deleteProduct(id) {
+    this.productService.deleteProduct(this.token, id).subscribe(
+      response => {
+
+      },
+      error => {
+        console.log(error as any);
+      }
+    );
+  }
+
+
+
+  repetidos() {
+    this.dobles = this.codigo.filter(function(item, index, array) {
+      return array.indexOf(item) === index;
+      });
+    for (let i of this.dobles) {
+
+      if (this.busqueda === i.code) {
+         this.codigoRepetido = false;
+         this.dobles.splice(1);
+         console.log('rep', this.dobles);
+         //swal('Importante', 'El codigo' + ' ' + this.busqueda + ' ' + 'ya existe en la lista', 'warning');
+
+
+         window.addEventListener("keypress", function(event) {
+           if (event.keyCode === 13){
+             event.preventDefault();
+            }
+          }, true);
+         this.busqueda = '';
+      } else {
+        this.codigoRepetido = true;
+      }
+
+    }
+  }
+
+
+
   
   /***********************************************
    REMOVER ITEMS
