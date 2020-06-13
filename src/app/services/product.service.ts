@@ -72,6 +72,20 @@ export class ProductService {
     return this.http.put(this.url + '/update-product/' + product._id, params, {headers});
   }
 
+
+  /***********************************************
+   ACTUALIZAR PRODUCTO EN VENTA
+  /***********************************************/
+  updateProductVenta(token, product): Observable<any>{
+    let params = JSON.stringify(product);
+    let headers = new HttpHeaders(({
+      'Content-Type': 'application/json',
+      Authorization: token
+    }));
+
+    return this.http.put(this.url + '/update-product-venta/' + product._id, params, {headers});
+  }
+
   /***********************************************
    ELIMINAR UN PRODUCTO
   /***********************************************/

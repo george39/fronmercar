@@ -19,6 +19,7 @@ import { EditArrozComponent } from './components/abarrotes/arroz/edit-arroz.comp
 import { VentasComponent } from './components/main/ventas.component';
 import { ProductPipe } from './pipes/product.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { SumarPipe } from './pipes/sumar.pipe';
 
 
 
@@ -40,7 +41,8 @@ import { SearchPipe } from './pipes/search.pipe';
     EditArrozComponent,
     VentasComponent,
     ProductPipe,
-    SearchPipe
+    SearchPipe,
+    SumarPipe
   ],
   imports: [
     CommonModule,

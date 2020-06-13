@@ -2,14 +2,7 @@
     <input type="text" #bus="ngModel" class="form-control" #lectura autofocus name="lectura" (keyup.enter)="addForm()" [(ngModel)]="busqueda" placeholder="Lea el código de barras">
 </div>
 
-<div class="row" *ngFor="let producto of product | search: busqueda">
-    <div *ngIf="busqueda === producto.code">
-        <input type="hidden" #name value="{{producto.name}}">
-        <input type="hidden" #priceClient value="{{producto.priceClient}}">
-        <input type="hidden" #code value="{{producto.code}}">
-        <input type="hidden" #quantity value="{{producto.quantity}}">
-    </div>
-</div>
+
 
 
 
@@ -19,24 +12,28 @@
             <div class="form-row" *ngFor="let producto of productos; let i = index">
                 <div class="form-group ">
 
-                    <input type="text " class="form-control " name="producto.name{{i}} " [(ngModel)]="producto.name ">
+                    <input type="text" class="form-control " id="nombre" name="product.name{{i}}  " [(ngModel)]="producto.name">
                 </div>
                 <div class="form-group ">
-                    <input type="number" class="form-control " name="precioCliente{{i}} " [(ngModel)]="precioCliente[i] ">
+                    <input type="number " class="form-control " [attr.arialValuenow]="cantidad" name="producto.priceClient{{i}} " [(ngModel)]="producto.priceClient ">
                 </div>
+
                 <div class="form-group ">
-                    <input type="number" class="form-control" name="cantidad{{i}}" [(ngModel)]="cant">
+                    <input type="number " class="form-control " name="producto.quantityClient{{i}} " [(ngModel)]="producto.quantityClient ">
                 </div>
-                <!-- <div class="form-group ">
-                    <input type="number " class="form-control ">
-                </div> -->
+
                 <div class="form-group col-md-2 ">
 
-                    <span (click)="removeForm([i]) " class="btn btn-danger ">-</span>
+                    <span (click)="disminuir(producto.code)" class="btn btn-danger ">-</span>
                 </div>
             </div>
-            <span (click)=" addItems() " class="btn btn-success ">+</span>
-            <button class="btn btn-primary ">Guardar</button>
+
+            <button type="submit " class="btn btn-primary ">Guardar</button>
         </div>
     </form>
+
+    <div>
+        <span>Total $ </span>
+        <input type="text" [ngModel]="total">
+    </div>
 </div>
