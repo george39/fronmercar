@@ -1,39 +1,120 @@
-<div class="row col-md-2 pt-2 mb-2">
+<div class="row col-12 col-md-3 pt-2 mb-2 mt-3 buscar">
     <input type="text" #bus="ngModel" class="form-control" #lectura autofocus name="lectura" (keyup.enter)="addForm()" [(ngModel)]="busqueda" placeholder="Lea el código de barras">
 </div>
 
+<!-- <h5 class="col nombre">Nombre</h5>
+<h5 class="cantidad">Cantidad</h5>
+<h5 class="subtotal">Subtotal</h5> -->
+
+<div class="container">
+    <div class="row">
 
 
 
 
-<div>
-    <form #ventasForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="container">
-            <div class="form-row" *ngFor="let producto of productos; let i = index">
+
+        <div id="caja" class="row col-12 col-md-5 ml-2">
+            <form #ventasForm="ngForm" (ngSubmit)="onSubmit(ventasForm.value)">
+                <div class="">
+                    <!-- <div class="form-row" *ngFor="let producto of productos; let i = index">
                 <div class="form-group ">
 
-                    <input type="text" class="form-control " id="nombre" name="product.name{{i}}  " [(ngModel)]="producto.name">
+                    <input type="text" class=" " id="nombre" name="product.name{{i}}  " [(ngModel)]="producto.name">
+                </div>
+
+                <div class="form-group ">
+                    <input type="number " class=" " name="producto.quantityClient{{i}} " [(ngModel)]="producto.quantityClient ">
                 </div>
                 <div class="form-group ">
-                    <input type="number " class="form-control " [attr.arialValuenow]="cantidad" name="producto.priceClient{{i}} " [(ngModel)]="producto.priceClient ">
-                </div>
-
-                <div class="form-group ">
-                    <input type="number " class="form-control " name="producto.quantityClient{{i}} " [(ngModel)]="producto.quantityClient ">
+                    <input type="number " class=" " [attr.arialValuenow]="cantidad" name="producto.priceClient{{i}} " [(ngModel)]="producto.priceClient ">
                 </div>
 
                 <div class="form-group col-md-2 ">
 
-                    <span (click)="disminuir(producto.code)" class="btn btn-danger ">-</span>
+                    <span (click)="disminuir(producto.code)" class=""><i class="fas fa-minus-circle disminuir"></i></span>
                 </div>
+            </div> -->
+
+                    <table class="table-dark">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                                <th>Disminuir</th>
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let producto of productos; let i = index">
+                            <tr>
+                                <td>
+                                    <input type="text" class=" " id="nombre" name="product.name{{i}}  " [(ngModel)]="producto.name">
+                                </td>
+
+
+                                <td>
+                                    <input type="number " class="cantidad " name="producto.quantityClient{{i}} " [(ngModel)]="producto.quantityClient ">
+
+                                </td>
+
+                                <td>
+                                    <input type="number " class="precio-cliente" [attr.arialValuenow]="cantidad" name="producto.priceClient{{i}} " [(ngModel)]="producto.priceClient ">
+
+                                </td>
+                                <td>
+                                    <span (click)="disminuir(producto.code)" class=""><i class="fas fa-minus-circle disminuir" size:7x ></i></span>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="boton-guardar form-group" *ngIf="productos.length > 0">
+
+                        <button type="submit " class="btn btn-primary ">Guardar</button>
+                    </div>
+
+                </div>
+            </form>
+
+
+
+
+        </div>
+        <div class=" ml-4 recibido-devuelta">
+            <div class=" col-md-2 ">
+                <span>Recibido$</span>
+                <input type="number" [(ngModel)]="devuelta">
             </div>
 
-            <button type="submit " class="btn btn-primary ">Guardar</button>
-        </div>
-    </form>
+            <div class=" col-md-2  mt-5 devuelta" *ngIf="devuelta > 0">
+                <span>Devuelta $</span>
+                <span>{{devuelta - total}}</span>
+            </div>
 
-    <div>
-        <span>Total $ </span>
-        <input type="text" [ngModel]="total">
+        </div>
+
+        <div class="col-md-3">
+            <div class=" pt-2 mb-2">
+                <h5>Consulatar un producto</h5>
+                <input type="text" #bus="ngModel" class="form-control" #lectura autofocus name="lectura" [(ngModel)]="busqueda2" placeholder="Lea el código de barras">
+            </div>
+            <div *ngIf="busqueda2" class="col-md-12">
+                <div *ngFor="let consulta of product | search: busqueda2">
+                    $ {{consulta.priceClient}}
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
     </div>
+    <div class="row total ml-4">
+        <span>Total $ </span>
+        <span>{{total}}</span>
+    </div>
+
+
 </div>

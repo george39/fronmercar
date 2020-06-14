@@ -2,6 +2,12 @@ import { Component, OnInit, ViewChild, ElementRef, DoCheck, ChangeDetectionStrat
 import { Product } from '../../../models/product';
 import { UserService } from '../../../services/user.service';
 import { ProductService } from '../../../services/product.service';
+import Swal from 'sweetalert2';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
+
+
 
 @Component({
   selector: 'app-ventas',
@@ -20,10 +26,14 @@ export class VentasComponent implements OnInit {
   public productos: any[];
   public total: number;
   public cantidad: number;
+  public devuelta: number;
   public busqueda;
+  public busqueda2;
 
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private productService: ProductService
   ) {
@@ -113,6 +123,10 @@ export class VentasComponent implements OnInit {
    AGREGAR ITEMS
   /***********************************************/
   addForm() {
+    // Me pone el scroll al principio
+    var scrol = document.getElementById('caja');
+    // scrol.innerHTML = html;
+    scrol.scrollTop = scrol.scrollHeight;
 
     this.productService.getProducts(this.token).subscribe(
       response => {
@@ -140,6 +154,7 @@ export class VentasComponent implements OnInit {
                       cantidad.quantity = cantidad.quantity - 1;
                       cantidad.priceClient = response.product.priceClient * cantidad.quantityClient;
                       this.totalVenta();
+                      
 
                       this.busqueda = '';
 
@@ -168,7 +183,7 @@ export class VentasComponent implements OnInit {
  /***********************************************
   FUNCION PARA ACTUALIZAR LOS PRODUCTOS DESPUES DE UNA VENTA
  /***********************************************/
-  onSubmit() {
+  onSubmit(data) {
     console.log('product', this.productos);
     for (let i = 0; i <= this.productos.length; i ++) {
       console.log('i', i);
@@ -177,6 +192,11 @@ export class VentasComponent implements OnInit {
         this.productService.updateProductVenta(this.token, producto).subscribe(
           response => {
             this.product = response.product;
+            Swal.fire('Buen trabajo', 'La venta se realizo con éxito', 'success');
+            this.productos.splice(data);
+            console.log('productos', this.productos);
+            this.total = 0;
+            this.devuelta = null;
           },
           error => {
             console.log(error as any);
@@ -196,10 +216,9 @@ export class VentasComponent implements OnInit {
     for (let i of this.productos) {
       sumar += i.priceClient;
       this.total = sumar;
-
     }
+  }
 
-    }
 
 
 }

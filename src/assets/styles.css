@@ -476,4 +476,59 @@ PANTALLA PRODUCTOS
   margin-left: 300px;
 }
 
+/***********************************************************
+ ESTILOS PARA LA CAJA DE LAS VENTAS
+************************************************************/
+#caja {
+  height: 250px;
+  overflow-y: scroll;
+  border: 1px solid #eee;
+  box-shadow: 0px 0px 20px #ccc inset;
+  border-radius: 5px;
+  background-color: #252525;
+}
+
+#caja::-webkit-scrollbar {
+  width: 8px;
+}
+
+#caja::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 5px;
+}
+
+.disminuir {
+  background-color: #76e012;
+  height: 22px;
+  cursor: pointer;
+}
+
+.precio-cliente {
+  width: 70px;
+}
+
+.cantidad {
+  width: 60px;
+}
+
+.total {
+  font-size: 30px;
+  color: red;
+}
+
+.recibido-devuelta {
+  font-size: 20px;
+  color: #76e012;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #eee;
+  box-shadow: 0px 0px 20px #ccc inset;
+  border-radius: 5px;
+  background-color: #252525;
+}
+
+.buscar {
+  margin-left: 140px !important;
+}
+
 /*# sourceMappingURL=styles.css.map */
