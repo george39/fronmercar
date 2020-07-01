@@ -1,0 +1,32 @@
+<div id="ventas-fecha">
+    {{title}}
+
+
+    <input type="date" [(ngModel)]="fecha" id="start">
+    <input type="date" [(ngModel)]="fecha2">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+
+            </tr>
+        </thead>
+
+
+        <tbody *ngFor="let ventas of venta">
+            <!-- (fecha | date : 'dd/MM/yyyy') >= (ventas.date | date : 'dd/MM/yyyy') &&  (fecha2 | date : 'dd/MM/yyyy') && (ventas.date | date : 'dd/MM/yyyy') ||  (fecha2 | date : 'dd/MM/yyyy') <= (ventas.date | date : 'dd/MM/yyyy') && (fecha | date : 'dd/MM/yyyy') >= (ventas.date | date : 'dd/MM/yyyy') -->
+            <tr *ngIf="(fecha | date : 'dd/MM/yyyy') <= (ventas.date | date : 'dd/MM/yyyy') && (fecha2 | date : 'dd/MM/yyyy') >= (ventas.date | date : 'dd/MM/yyyy')">
+                es igual
+                <td>{{ventas.name}}</td>
+                <td>{{ventas.date | date : 'dd/MM/yyyy'}}</td>
+                <td>{{ventas.priceClient}}</td>
+                <td>{{ventas.quantityClient}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

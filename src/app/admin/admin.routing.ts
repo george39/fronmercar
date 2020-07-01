@@ -16,6 +16,7 @@ import { ArrozComponent } from './components/abarrotes/arroz/arroz.component';
 import { AddAceiteComponent } from './components/abarrotes/add-aceite.component';
 import { EditArrozComponent } from './components/abarrotes/arroz/edit-arroz.component';
 import { VentasComponent } from './components/main/ventas.component';
+import { ConsultaVentasComponent } from './components/main/consulta-ventas.component';
 
 
 
@@ -37,7 +38,8 @@ const adminRoutes: Routes = [
            {path: 'crear-arroz', component: ArrozComponent},
            {path: 'editar-arroz', component: EditArrozComponent},
            {path: 'crear-aceite', component: AddAceiteComponent},
-           {path: 'ventas', component: VentasComponent}
+           {path: 'ventas', component: VentasComponent},
+           {path: 'consulta-ventas', component: ConsultaVentasComponent},
 
            // { path: 'abarrotes', component: MainComponent }
         ]

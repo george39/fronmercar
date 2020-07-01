@@ -190,7 +190,7 @@ REDES SOCIALES
 ASIDE
 ******************************************************/
 #aside {
-  height: 150px;
+  height: 200px;
   width: 20%;
   background-color: #252525;
   border: 1px solid #1E1E1E;
@@ -529,6 +529,13 @@ PANTALLA PRODUCTOS
 
 .buscar {
   margin-left: 140px !important;
+}
+
+/***********************************************************
+ VENTAS POR FECHA
+************************************************************/
+#ventas-fecha {
+  width: 80%;
 }
 
 /*# sourceMappingURL=styles.css.map */

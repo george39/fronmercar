@@ -20,6 +20,7 @@ import { VentasComponent } from './components/main/ventas.component';
 import { ProductPipe } from './pipes/product.pipe';
 import { SearchPipe } from './pipes/search.pipe';
 import { SumarPipe } from './pipes/sumar.pipe';
+import { ConsultaVentasComponent } from './components/main/consulta-ventas.component';
 
 
 
@@ -42,7 +43,8 @@ import { SumarPipe } from './pipes/sumar.pipe';
     VentasComponent,
     ProductPipe,
     SearchPipe,
-    SumarPipe
+    SumarPipe,
+    ConsultaVentasComponent
   ],
   imports: [
     CommonModule,

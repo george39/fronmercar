@@ -70,7 +70,7 @@
                     </table>
                     <div class="boton-guardar form-group" *ngIf="productos.length > 0">
 
-                        <button type="submit " class="btn btn-primary ">Guardar</button>
+                        <button type="submit " (click)="guardarVenta()" class="btn btn-primary ">Guardar</button>
                     </div>
 
                 </div>
@@ -98,8 +98,8 @@
                 <h5>Consulatar un producto</h5>
                 <input type="text" #bus="ngModel" class="form-control" #lectura autofocus name="lectura" [(ngModel)]="busqueda2" placeholder="Lea el código de barras">
             </div>
-            <div *ngIf="busqueda2" class="col-md-12">
-                <div *ngFor="let consulta of product | search: busqueda2">
+            <div *ngFor="let consulta of product | search: busqueda2">
+                <div *ngIf="busqueda2 === consulta.code" class="col-md-12">
                     $ {{consulta.priceClient}}
                 </div>
 

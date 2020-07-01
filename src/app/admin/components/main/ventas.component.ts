@@ -4,6 +4,8 @@ import { UserService } from '../../../services/user.service';
 import { ProductService } from '../../../services/product.service';
 import Swal from 'sweetalert2';
 import { Router, ActivatedRoute } from '@angular/router';
+import { VentaService } from '../../../services/venta.service';
+import { Venta } from '../../../models/venta';
 
 
 
@@ -23,6 +25,7 @@ export class VentasComponent implements OnInit {
   public token;
   public product: Product;
   public product2: Product;
+  public venta: Venta;
   public productos: any[];
   public total: number;
   public cantidad: number;
@@ -35,12 +38,14 @@ export class VentasComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private productService: ProductService
+    private productService: ProductService,
+    private ventaService: VentaService
   ) {
     this.title = 'Ventas';
     this.token = userService.getToken();
     this.productos = new Array();
     this.total = 0;
+    this.venta = new Venta('', '', '', this.cantidad, this.cantidad);
 
   }
 
@@ -185,9 +190,12 @@ export class VentasComponent implements OnInit {
  /***********************************************/
   onSubmit(data) {
     console.log('product', this.productos);
+  
     for (let i = 0; i <= this.productos.length; i ++) {
       console.log('i', i);
       this.productos.forEach(producto => {
+        
+
 
         this.productService.updateProductVenta(this.token, producto).subscribe(
           response => {
@@ -203,6 +211,7 @@ export class VentasComponent implements OnInit {
           }
         );
       });
+      
     }
   }
 
@@ -219,6 +228,24 @@ export class VentasComponent implements OnInit {
     }
   }
 
+
+  /***********************************************
+   GUARDAR UNA VENTA
+  /***********************************************/
+  guardarVenta() {
+    this.productos.forEach(productoGuardado => {
+
+        this.ventaService.saveVenta(this.token, productoGuardado).subscribe(
+          response => {
+          this.venta = response.venta;
+          },
+          error => {
+            console.log(error as any);
+          }
+        );
+
+    });
+  }
 
 
 }
